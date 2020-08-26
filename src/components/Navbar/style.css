@@ -1,0 +1,9 @@
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+}
+.disabled-link {
+  pointer-events: none;
+}
+.enabled-link {
+  pointer-events: auto;
+}
