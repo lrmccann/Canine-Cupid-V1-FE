@@ -73,7 +73,9 @@ import Jumbotron from "../components/Jumbotron";
           petName: formObject.petName,
           breed: formObject.breed,
           age: formObject.age,
-          // ball: formObject.ball
+          park: formObject.park,
+          ball: formObject.ball,
+          frisbee: formObject.frisbee,
           email: formObject.email,
           photoUrl: formObject.photoUrl,
           info: formObject.info
@@ -184,21 +186,21 @@ import Jumbotron from "../components/Jumbotron";
                 onChange={handleInputChange}
                 label="Playing in the Park: "
                 name="park"
-                value="park"
+                // value="false"
               />
 
                 <Checkbox
                 onChange={handleInputChange}
                 label="Playing with a Ball: "
                 name="ball"
-                value="ball"
+                // value="false"
               />
 
                 <Checkbox
                 onChange={handleInputChange}
                 label="Playing with a Frisbee: "
                 name="frisbee"
-                value="frisbee"
+                // value="false"
               />
 
                 <TextArea
