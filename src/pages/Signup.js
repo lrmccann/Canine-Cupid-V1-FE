@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import API from "../utils/API";
 // import Hero from "../components/Hero";
 // import Container from "../components/Container";
 // import Row from "../components/Row";
@@ -11,16 +12,79 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
 import Jumbotron from "../components/Jumbotron";
 
 
-// function inputHandler(){
-// 
-// }
+// // function inputHandler(){
+// // 
+// // }
 
-function Signup() {
+// function Signup() {
 
-  // const [1,2]=setState({
-  // userName
-  // password
-  // })
+//   // const [1,2]=setState({
+//   // userName
+//   // password
+//   // })
+// ------------------ 
+  function Signup() {
+    // Setting our component's initial state
+    // const [books, setBooks] = useState([])
+    const [users, setUsers] = useState([])
+    const [formObject, setFormObject] = useState({})
+    console.log("state",formObject);
+  
+    // Load all books and store them with setBooks
+    // useEffect(() => {
+    //   loadBooks()
+    // }, [])
+  
+    // Loads all books and sets them to books
+    // function loadBooks() {
+    //   API.getBooks()
+    //     .then(res => 
+    //       setBooks(res.data)
+    //     )
+    //     .catch(err => console.log(err));
+    // };
+  
+    // Deletes a book from the database with a given id, then reloads books from the db
+    // function deleteBook(id) {
+    //   API.deleteBook(id)
+    //     .then(res => loadBooks())
+    //     .catch(err => console.log(err));
+    // }
+  
+    // Handles updating component state when the user types into the input field
+    function handleInputChange(event) {
+      const { name, value } = event.target;
+      setFormObject({...formObject, [name]: value})
+      console.log("state",formObject);
+    };
+  
+    // When the form is submitted, use the API.saveBook method to save the User data
+    // Then reload User from the database
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      if (formObject.userName && formObject.password) {
+        // API.saveBook({
+          // title: formObject.title,
+          // author: formObject.author,
+          // synopsis: formObject.synopsis
+        API.saveUser({
+          userName: formObject.userName,
+          password: formObject.password,
+          petName: formObject.petName,
+          breed: formObject.breed,
+          age: formObject.age,
+          // ball: formObject.ball
+          email: formObject.email,
+          photoUrl: formObject.photoUrl,
+          info: formObject.info
+        })
+          // .then(res => loadBooks())
+          .then(res => console.log("response",res))
+          .catch(err => console.log(err));
+      }
+    };
+  
+// ------------------  
 
   return (
     <div>
@@ -33,27 +97,27 @@ function Signup() {
         <Row>
         <form>
               <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}              
                 type="text"
-                minlength="6" 
-                maxlength="20" 
+                minLength="6" 
+                maxLength="20" 
                 size="40"  
                 label="User Name: "
                 name="userName"
                 placeholder="User Name (required)"
               />
               <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="password" 
-                minlength="6" 
-                maxlength="20" 
+                minLength="6" 
+                maxLength="20" 
                 size="40"
                 label="Password: " 
                 name="password"
                 placeholder="Password (required)"
               />
                <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="email"
                 // minlength="6" 
                 // maxlength="30" 
@@ -63,7 +127,7 @@ function Signup() {
                 placeholder="Email"
               />
                 <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="text"
                 // minlength="6" 
                 // maxlength="30" 
@@ -73,7 +137,7 @@ function Signup() {
                 placeholder="Your Pet's Name (required)"
               />
                 <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="text"
                 // minlength="6" 
                 // maxlength="30" 
@@ -83,7 +147,7 @@ function Signup() {
                 placeholder="Your Pet's Breed"
               />
                 <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="number"
                 // minlength="6" 
                 // maxlength="30" 
@@ -94,7 +158,7 @@ function Signup() {
               />
             
                 <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="text"
                 // minlength="6" 
                 // maxlength="30" 
@@ -117,28 +181,28 @@ function Signup() {
                 
                 <p>Your Pet's Interests:</p>
                 <Checkbox
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 label="Playing in the Park: "
                 name="park"
                 value="park"
               />
 
                 <Checkbox
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 label="Playing with a Ball: "
                 name="ball"
                 value="ball"
               />
 
                 <Checkbox
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 label="Playing with a Frisbee: "
                 name="frisbee"
                 value="frisbee"
               />
 
                 <TextArea
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 // type="textarea"
                 // id="info"            
                 // minlength="6" 
@@ -152,8 +216,8 @@ function Signup() {
               />
              
               <FormBtn
-                // disabled={!(formObject.author && formObject.title)}
-                // onClick={handleFormSubmit}
+                disabled={!(formObject.userName && formObject.password)}
+                onClick={handleFormSubmit}
               >
                 Save
               </FormBtn>
