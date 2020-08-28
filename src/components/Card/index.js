@@ -13,13 +13,13 @@ function Card(props) {
         <div className="content">
           <ul>
             <li>
-            <strong>{props.name}</strong> 
+            <h5>Name: {props.name}</h5> 
             </li>
             <li>
-              <a href={props.github}>Github:</a> 
+              <h5>Breed: {props.breed}</h5> 
             </li>
             <li>
-              <strong>Deployed:</strong> {props.deployed}
+              <h5>Favorite Toy: {props.favtoy}</h5> 
             </li>
           </ul>
         </div>

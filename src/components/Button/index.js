@@ -1,8 +1,11 @@
 import React from "react"
+import "./style.css"
+
+
 
 function Button (props) {
     return ( 
-        <div className={`btn${props.btn}`} {...props}>{props.children}</div>
+        <button className="matchbtn" {...props}>{props.text}</button>
     );
 };
 
