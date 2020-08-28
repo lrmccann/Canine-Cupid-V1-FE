@@ -7,9 +7,8 @@ import API from "../utils/API";
 // import Inputfield from "../components/Inputfield";
 // import Button from "../components/Button";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
+// import { List, ListItem } from "../components/List";
 import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
-import Jumbotron from "../components/Jumbotron";
 
 
 // // function inputHandler(){
