@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import Hero from "../components/Hero";
 // import Container from "../components/Container";
 // import Row from "../components/Row";
@@ -8,8 +8,8 @@ import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
-import { Link } from "react-router-dom";
-// import Jumbotron from "../components/Jumbotron";
+import { SignupButton } from "../components/Button";
+import API from "../utils/API";
 
 
 // function inputHandler(){
@@ -18,10 +18,29 @@ import { Link } from "react-router-dom";
 
 function Login() {
 
-  // const [1,2]=setState({
-  // userName
-  // password
-  // })
+  const [loginObject, setLoginObject] = useState({})
+  console.log("state",loginObject);
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setLoginObject({...loginObject, [name]: value})
+  };
+
+  function handleLoginSubmit(event) {
+    event.preventDefault();
+    if (loginObject.userName && loginObject.password) {
+      // API.saveBook({
+        // title: formObject.title,
+        // author: formObject.author,
+        // synopsis: formObject.synopsis
+      API.getUser({
+        userName: loginObject.userName,
+        password: loginObject.password
+      })
+        .then(res => console.log("response",res))
+        .catch(error => console.log(error.response));
+    }
+  };
 
   return (
     <div>
@@ -34,20 +53,20 @@ function Login() {
         <Row>
         <form>
               <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="text"
-                minlength="6" 
-                maxlength="20" 
+                minLength="6" 
+                maxLength="20" 
                 size="36"  
                 label="User Name: "
                 name="userName"
                 placeholder="User Name (required)"
               />
               <Input
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 type="password" 
-                minlength="6" 
-                maxlength="20" 
+                minLength="6" 
+                maxLength="20" 
                 size="36"
                 label="Password: " 
                 name="password"
@@ -59,15 +78,11 @@ function Login() {
               >
                 Log In
               </FormBtn>
-              <Link 
-                to="/signup">    
-                <FormBtn
-                // disabled={!(formObject.author && formObject.title)}
-                // onClick={handleFormSubmit}
-              >
-                Sign Up
-              </FormBtn>
-              </Link>
+                
+              <SignupButton
+                disabled={!(loginObject.userName && loginObject.password)}
+                onClick={handleLoginSubmit}
+                />
         
             </form>
 
