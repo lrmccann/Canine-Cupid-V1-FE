@@ -5,13 +5,13 @@ export default {
 saveUser: async function(userData) {
     console.log("API.saveUser was called", userData)
     // var myJSON = JSON.stringify(userData);
-return await axios.post("https://canine-cupid.herokuapp.com/api/users", userData);
+return await axios.post("https://canine-cupid.herokuapp.com/users", userData);
 },
 
 getUser: async function(userData) {
 console.log("API.getUser was called", userData)
     // var myJSON = JSON.stringify(userData);
-return await axios.get("https://canine-cupid.herokuapp.com/api/users/"+userData.userName);
+return await axios.get("https://canine-cupid.herokuapp.com/users/"+userData.userName);
 }
 
 // Gets the User with the given id
