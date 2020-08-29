@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 import ProfDetails from "../components/ProfDetails";
 
 let Profile = () => {

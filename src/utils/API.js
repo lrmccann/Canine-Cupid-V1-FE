@@ -2,9 +2,19 @@ import axios from "axios";
 
 export default {
 // Create a User/ Saves a User to the database
-    saveUser: function(userData) {
-    return axios.post("/api/users/", userData);
+    saveUser: async function(userData) {
+        console.log("API.saveUser was called", userData)
+        // var myJSON = JSON.stringify(userData);
+    return await axios.post("https://canine-cupid.herokuapp.com/api/users", userData);
+    },
+
+    getUser: async function(userData) {
+    console.log("API.getUser was called", userData)
+        // var myJSON = JSON.stringify(userData);
+    return await axios.get("https://canine-cupid.herokuapp.com/api/users/"+userData);
     }
+
+
 // Gets the User with the given id
 //     getUser: function(id) {
 //     return axios.get("/api/users/" + id);

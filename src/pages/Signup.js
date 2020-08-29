@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import API from "../utils/API";
 // import Hero from "../components/Hero";
 // import Container from "../components/Container";
@@ -25,7 +25,7 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
   function Signup() {
     // Setting our component's initial state
     // const [books, setBooks] = useState([])
-    const [users, setUsers] = useState([])
+    // const [users, setUsers] = useState([])
     const [formObject, setFormObject] = useState({})
     console.log("state",formObject);
   
@@ -54,7 +54,6 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
     function handleInputChange(event) {
       const { name, value } = event.target;
       setFormObject({...formObject, [name]: value})
-      console.log("state",formObject);
     };
   
     // When the form is submitted, use the API.saveBook method to save the User data
@@ -79,9 +78,8 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
           photoUrl: formObject.photoUrl,
           info: formObject.info
         })
-          // .then(res => loadBooks())
           .then(res => console.log("response",res))
-          .catch(err => console.log(err));
+          .catch(error => console.log(error.response));
       }
     };
   
