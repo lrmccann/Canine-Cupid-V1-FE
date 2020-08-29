@@ -1,12 +1,23 @@
 import React from "react"
-import "./style.css"
+import { useHistory } from "react-router-dom";
+// import "./style.css"
 
 
 
-function Button (props) {
+export function Button (props) {
     return ( 
         <button className="matchbtn" {...props}>{props.text}</button>
     );
 };
 
-export default Button
+export function SignupButton(props) {
+  const history = useHistory();
+  function handleClick() {
+    history.push("/signup");
+  }
+  return (
+    <button style={{ float: "right", marginBottom: 10 }} className="btn btn-success" {...props}>
+        Sign Up
+    </button>
+  );
+}
