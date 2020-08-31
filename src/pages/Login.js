@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 // import Hero from "../components/Hero";
-// import Container from "../components/Container";
-// import Row from "../components/Row";
-// import Col from "../components/Col";
 // import Inputfield from "../components/Inputfield";
 // import Button from "../components/Button";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
-import { SignupButton } from "../components/Button";
+import { SignupButton, LoginButton } from "../components/Button";
 import API from "../utils/API";
-
-
-// function inputHandler(){
-// 
-// }
 
 function Login() {
 
@@ -26,14 +18,14 @@ function Login() {
     setLoginObject({...loginObject, [name]: value})
   };
 
-  function handleLoginSubmit(event) {
+  async function handleLoginSubmit(event) {
     event.preventDefault();
     if (loginObject.userName && loginObject.password) {
       // API.saveBook({
         // title: formObject.title,
         // author: formObject.author,
         // synopsis: formObject.synopsis
-      API.getUser({
+      await API.getUser({
         userName: loginObject.userName,
         password: loginObject.password
       })
@@ -46,46 +38,36 @@ function Login() {
     <div>
       {/* <Hero/> */}
       {/* <Jumbotron> */}
-        <h1>Login Page</h1>
+       
       {/* </Jumbotron> */}
 
       <Container fluid>
         <Row>
-        <form>
-              <Input
-                onChange={handleInputChange}
-                type="text"
-                minLength="6" 
-                maxLength="20" 
-                size="36"  
-                label="User Name: "
-                name="userName"
-                placeholder="User Name (required)"
-              />
-              <Input
-                onChange={handleInputChange}
-                type="password" 
-                minLength="6" 
-                maxLength="20" 
-                size="36"
-                label="Password: " 
-                name="password"
-                placeholder="Password (required)"
-              />
-              <FormBtn
-                // disabled={!(formObject.author && formObject.title)}
-                // onClick={handleFormSubmit}
-              >
-                Log In
-              </FormBtn>
-                
-              <SignupButton
-                disabled={!(loginObject.userName && loginObject.password)}
-                onClick={handleLoginSubmit}
-                />
-        
+          <Col size="md-6"> 
+            <form>
+                  <Input
+                    onChange={handleInputChange}
+                    type="text"
+                    size="36"  
+                    label="User Name: "
+                    name="userName"
+                    placeholder="User Name (required)"
+                  />
+                  <Input
+                    onChange={handleInputChange}
+                    type="password" 
+                    size="36"
+                    label="Password: " 
+                    name="password"
+                    placeholder="Password (required)"
+                  />
+                  <LoginButton
+                    disabled={!(loginObject.userName && loginObject.password)}
+                    onClick={handleLoginSubmit}
+                  />                
+                  <SignupButton />
             </form>
-
+          </Col>
           {/* <Col size="md-12">
             <Inputfield 
             label="User Name: " 
