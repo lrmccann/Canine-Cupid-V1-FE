@@ -1,5 +1,5 @@
 import React from "react";
-import Col from "../Col";
+import { Col, Row, Container } from "../../components/Grid";
 import "./style.css"
 
 function ProfDetails(props){

@@ -1,7 +1,7 @@
 import React from "react";
 // import CardBtn from "../CardBtn";
 import "./style.css";
-import Col from "../Col";
+import { Col, Row, Container } from "../../components/Grid";
 
 function Card(props) {
   return (

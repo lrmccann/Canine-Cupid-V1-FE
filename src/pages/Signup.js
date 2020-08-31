@@ -1,9 +1,6 @@
 import React, { useState} from "react";
 import API from "../utils/API";
 // import Hero from "../components/Hero";
-// import Container from "../components/Container";
-// import Row from "../components/Row";
-// import Col from "../components/Col";
 // import Inputfield from "../components/Inputfield";
 // import Button from "../components/Button";
 import { Col, Row, Container } from "../components/Grid";
@@ -87,14 +84,10 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
 
   return (
     <div>
-      {/* <Hero/> */}
-      {/* <Jumbotron> */}
-        <h2>Sign Up Page</h2>
-      {/* </Jumbotron> */}
-
       <Container fluid>
         <Row>
-        <form>
+          <Col size="md-4">
+          <form>
               <Input
                 onChange={handleInputChange}              
                 type="text"
@@ -138,33 +131,20 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
                 <Input
                 onChange={handleInputChange}
                 type="text"
-                // minlength="6" 
-                // maxlength="30" 
+                maxLength="50" 
                 size="40"  
                 label="Your Pet's Breed: "
                 name="breed"
                 placeholder="Your Pet's Breed"
               />
-                <Input
+              <Input
                 onChange={handleInputChange}
                 type="number"
-                // minlength="6" 
-                // maxlength="30" 
+                maxLength="2" 
                 size="40"  
                 label="Your Pet's Age: "
                 name="age"
                 placeholder="Your Pet's Age"
-              />
-            
-                <Input
-                onChange={handleInputChange}
-                type="text"
-                // minlength="6" 
-                // maxlength="30" 
-                size="40"  
-                label="URL to your Pet's Photograph: "
-                name="photoUrl"
-                placeholder="URL to your Pet's Photograph"
               />
 
                 {/* <Input
@@ -177,16 +157,27 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
                 name="interests"
                 placeholder="Your Pet's Interests"
               /> */}
-                
-                <p>Your Pet's Interests:</p>
-                <Checkbox
+            </form>
+          </Col>
+          <Col size="md-4">
+            <form>         
+              <Input
+                onChange={handleInputChange}
+                type="text"
+                size="40"  
+                label="URL to your Pet's Photograph: "
+                name="photoUrl"
+                placeholder="URL to your Pet's Photograph"
+              />
+              <p>Your Pet's Interests:</p>
+              <Checkbox
                 onChange={handleInputChange}
                 label="Playing in the Park: "
                 name="park"
                 // value="false"
               />
 
-                <Checkbox
+              <Checkbox
                 onChange={handleInputChange}
                 label="Playing with a Ball: "
                 name="ball"
@@ -200,12 +191,10 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
                 // value="false"
               />
 
-                <TextArea
+              <TextArea
                 onChange={handleInputChange}
                 // type="textarea"
                 // id="info"            
-                // minlength="6" 
-                // maxlength="30" 
                 // size="40"  
                 label="Additional Information about your Pet: "
                 // label for="info"
@@ -213,15 +202,14 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
                 rows="8"
                 placeholder="Additional Information about your Pet"
               />
-             
               <FormBtn
                 disabled={!(formObject.userName && formObject.password)}
                 onClick={handleFormSubmit}
               >
                 Save
               </FormBtn>
-            
             </form>
+          </Col>
         </Row> 
       </Container>
     </div>

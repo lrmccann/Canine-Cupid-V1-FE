@@ -17,7 +17,7 @@ function App() {
       <Router>
       {/* <Navbar sticky="top"/> */}
         <Header/>
-        <Wrapper>
+        {/* <Wrapper> */}
           <Route exact path="/" component={Login} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/matches" component={Matches} /> */}
         {/* <Contacts /> */}
           <Route exact path="/matches" component={Matches} />
-        </Wrapper>
+        {/* </Wrapper> */}
       <Footer />
     </Router>
   )
