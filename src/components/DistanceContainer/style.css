@@ -1,0 +1,11 @@
+.distanceContainer{
+    height: 100px;
+    width: 100%;
+    border: black solid 1px;
+    background-color: rgb(121, 163, 255);
+    margin-top: 5px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 35px;
+    
+    }

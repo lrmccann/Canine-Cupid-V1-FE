@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 // import CardBtn from "../CardBtn";
 import "./style.css";
-import { Col, Row, Container } from "../../components/Grid";
+import Col from "../Col"
 
-function Card(props) {
+function CardTwo(props) {
   return (
     <Col size="md-4">
       <div className="card">
@@ -29,5 +29,4 @@ function Card(props) {
   );
 }
 
-
-export default Card;
+export default CardTwo;
