@@ -13,10 +13,7 @@ export function Button(props) {
 };
 
 export function LoginButton(props) {
-    // const history = useHistory();
-    // function handleClick() {
-    //   history.push("/login");
-    // }
+ 
     return (
         <button 
         style={{ float: "left", marginBottom: 10 }} 

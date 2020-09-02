@@ -63,8 +63,9 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
           // author: formObject.author,
           // synopsis: formObject.synopsis
         API.saveUser({
-          userName: formObject.userName,
           password: formObject.password,
+          userData: {
+             userName: formObject.userName,
           petName: formObject.petName,
           breed: formObject.breed,
           age: formObject.age,
@@ -74,6 +75,7 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
           email: formObject.email,
           photoUrl: formObject.photoUrl,
           info: formObject.info
+          }
         })
           .then(res => console.log("response",res))
           .catch(error => console.log(error.response));
@@ -108,16 +110,6 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
                 name="password"
                 placeholder="Password (required)"
               />
-               <Input
-                onChange={handleInputChange}
-                type="email"
-                // minlength="6" 
-                // maxlength="30" 
-                size="40"  
-                label="Email: "
-                name="email"
-                placeholder="Email"
-              />
                 <Input
                 onChange={handleInputChange}
                 type="text"
@@ -127,6 +119,16 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
                 label="Your Pet's Name: "
                 name="petName"
                 placeholder="Your Pet's Name (required)"
+              />
+               <Input
+                onChange={handleInputChange}
+                type="email"
+                // minlength="6" 
+                // maxlength="30" 
+                size="40"  
+                label="Email: "
+                name="email"
+                placeholder="Email"
               />
                 <Input
                 onChange={handleInputChange}
