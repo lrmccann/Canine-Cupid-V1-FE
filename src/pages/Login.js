@@ -30,7 +30,12 @@ function Login() {
         userName: loginObject.userName,
         password: loginObject.password
       })
-        .then(res => console.log("response",res))
+        .then(
+              // const history = useHistory();
+              // function handleClick() {
+              //   history.push("/login");
+              // }
+          res => console.log("response",res))
         .catch(error => console.log(error.response));
     }
   };
