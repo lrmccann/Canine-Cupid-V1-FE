@@ -30,15 +30,17 @@ function Login() {
         userName: loginObject.userName,
         password: loginObject.password
       })
-        .then(
-              // const history = useHistory();
-              // function handleClick() {
-              //   history.push("/login");
-              // }
-          res => console.log("response",res))
+        .then(res => handleAuthenticatedReasponse(res))
         .catch(error => console.log(error.response));
     }
   };
+
+  function handleAuthenticatedReasponse(res) {
+    if (res.data == "User not found.") {
+      alert("user not found")
+    }
+  }
+
 
   return (
     <div>
