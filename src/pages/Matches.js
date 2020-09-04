@@ -11,6 +11,7 @@ import { MessageButton } from "../components/Button";
 import { prependOnceListener } from "process";
 import "../components/MatchCards/images/small-profile-pic-one.png";
 import Navbar from "../components/Navbar";
+import Map from "../components/map";
 
 
 function Matches(props) {
@@ -70,9 +71,14 @@ function Matches(props) {
             />
           </Col>
         </Row>
+        
+        <Map />
+        
+       
       </Container>
+     
     </div>
-    // <MapContainer />
+
   );
 }
 
