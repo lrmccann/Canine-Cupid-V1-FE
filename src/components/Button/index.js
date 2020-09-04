@@ -42,7 +42,7 @@ export function SignupButton() {
     }
     return (
         <button 
-            style={{ float: "right", marginBottom: 10 }} 
+            style={{ float: "left", marginBottom: 10 }} 
             className="btn btn-success" 
             onClick={handleClick} >
             Sign Up

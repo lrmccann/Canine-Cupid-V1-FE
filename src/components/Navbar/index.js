@@ -10,7 +10,8 @@ function Navbar(props) {
       <a className="nav-content" href="/profile">Home</a>
       <a className="nav-content" href="/matchnow">Match Now</a>
       <a className="nav-content" href="/matches">Matches</a>
-      <a className="nav-content" href="/matches">Options</a>
+      <a className="nav-content" href="#">Edit Profile</a>
+      <a className="nav-content" href="#">Log out</a>
     </div>
   );
 }
