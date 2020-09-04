@@ -1,5 +1,4 @@
 .matchbtn{
-    float: right;
     height: 100px;
     width: 500px;
     border: 1px solid black;
@@ -9,4 +8,11 @@
     border-radius: 10px;
     font-size: 25px;
     background-color: rgb(121, 163, 255);
+}
+
+.messagebutton{
+    height: 73px;
+    width: 228px;
+    border-radius:0 17.5px 17.5px 0;
+    background-color: #8ABAD3FF;
 }
