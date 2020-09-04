@@ -19,7 +19,6 @@ function App() {
       {/* <Navbar sticky="top"/> */}
       {/* <Text> */}
         <Header />
-          <Route exact path="/" component={Profile} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/profile" component={Profile} />
