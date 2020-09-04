@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 // import CardBtn from "../CardBtn";
 import "./style.css";
-import { Col, Row, Container } from "../../components/Grid";
+import Col from "../Col"
 
 function Card(props) {
   return (
-    <Col size="md-4">
+    <Col size="md-6">
       <div className="card">
         <div className="img-container">
           <img alt={props.name} src={props.image} />
