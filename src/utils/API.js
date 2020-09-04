@@ -13,7 +13,6 @@ console.log("API.getUser was called", userData)
     // var myJSON = JSON.stringify(userData);
 return await axios.get("https://canine-cupid.herokuapp.com/users/"+userData.userName+"/"+userData.password);
 }
-
 // Gets the User with the given id
 //     getUser: function(id) {
 //     return axios.get("/api/users/" + id);

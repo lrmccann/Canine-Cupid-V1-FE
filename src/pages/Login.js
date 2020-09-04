@@ -7,9 +7,11 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { SignupButton, LoginButton } from "../components/Button";
 import API from "../utils/API";
-
+import { useHistory } from "react-router-dom";
 
 function Login() {
+
+  const history = useHistory();
 
   const [loginObject, setLoginObject] = useState({})
   console.log("state",loginObject);
@@ -22,23 +24,25 @@ function Login() {
   async function handleLoginSubmit(event) {
     event.preventDefault();
     if (loginObject.userName && loginObject.password) {
-      // API.saveBook({
-        // title: formObject.title,
-        // author: formObject.author,
-        // synopsis: formObject.synopsis
       await API.getUser({
         userName: loginObject.userName,
         password: loginObject.password
       })
-        .then(
-              // const history = useHistory();
-              // function handleClick() {
-              //   history.push("/login");
-              // }
-          res => console.log("response",res))
+        .then(res => handleAuthenticatedResponse(res))
         .catch(error => console.log(error.response));
     }
   };
+
+  function handleAuthenticatedResponse(res) {
+    if (res.data === "User not found.") {
+      alert("User not found")
+    } else if (res.data === "Wrong password.") {
+      alert("Wrong password.")  
+    } else {
+      console.log("res.data",res.data)
+      history.push("/profile");
+    }
+  }
 
   return (
     <div>
