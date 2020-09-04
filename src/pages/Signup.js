@@ -65,16 +65,16 @@ import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
         API.saveUser({
           password: formObject.password,
           userData: {
-             userName: formObject.userName,
-          petName: formObject.petName,
-          breed: formObject.breed,
-          age: formObject.age,
-          park: formObject.park,
-          ball: formObject.ball,
-          frisbee: formObject.frisbee,
-          email: formObject.email,
-          photoUrl: formObject.photoUrl,
-          info: formObject.info
+              userName: formObject.userName,
+              petName: formObject.petName,
+              breed: formObject.breed,
+              age: formObject.age,
+              park: formObject.park,
+              ball: formObject.ball,
+              frisbee: formObject.frisbee,
+              email: formObject.email,
+              photoUrl: formObject.photoUrl,
+              info: formObject.info
           }
         })
           .then(res => console.log("response",res))
