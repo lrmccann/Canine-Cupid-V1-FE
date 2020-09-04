@@ -2,12 +2,14 @@
     border: solid 1px black;
     border-radius: 10px;
     padding: 5px;
-    height: 400px;
-    background-color: rgb(121, 163, 255);
+    height: 350px;
+    background-color: #8ABAD3FF;
+    margin-top: 7%;
 }
 
 .profDetails > .content {
     padding: 15px;
+    color:black;
 }
 
 .profDetails > .content > h4{

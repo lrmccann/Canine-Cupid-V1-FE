@@ -1,26 +1,28 @@
 import React from "react"
-import {Row, Container } from "../components/Grid";
+import { Row, Container } from "../components/Grid";
 import CardTwo from "../components/CardTwo";
 import SwipeBtn from "../components/SwipeBtn";
 import ProfDetails from "../components/ProfDetails";
 import DistanceContainer from "../components/DistanceContainer";
 import Col from "../components/Col";
+import Navbar from "../components/Navbar";
 
 let Matchnow = () => {
-    
+
 
     return (
         <div>
-            <h2>Get yo pup the lovin they deserve and match now!</h2>
-            <div className="line" style={{border:"solid black 1px",  margin:"0 0 25px 0"}}></div>
+        <Navbar />
+            <h2 style={{margin: "0 0 0 27%" }}>Get yo pup the lovin they deserve and match now!</h2>
+            <div className="line" style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
 
-            <Container fluid>
+            <Container fixed>
                 <Row>
                     <Col size="md-3">
                         <SwipeBtn
-                        size = "lg"
-                        variant = "danger"
-                        direction = "left"
+                            size="lg"
+                            variant="danger"
+                            direction="left"
                         />
                     </Col>
                     <Col size="md-6">
@@ -34,12 +36,14 @@ let Matchnow = () => {
 
                     <Col size="md-3">
                         <SwipeBtn
-                            size = "lg"
-                            variant = "success"
-                            direction = "right"
+                            size="lg"
+                            variant="success"
+                            direction="right"
                         />
                     </Col>
                 </Row>
+                </Container>
+                <Container fluid>
                 <Row>
                     <Col size="md-12">
                         <ProfDetails
@@ -54,12 +58,7 @@ let Matchnow = () => {
                         <DistanceContainer
                             distance="2.3"
                         />
-
-
                     </Col>
-
-
-
                 </Row>
             </Container>
         </div>

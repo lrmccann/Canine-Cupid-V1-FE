@@ -1,16 +1,25 @@
 import React from "react"
 import { useHistory } from "react-router-dom";
-// import "./style.css"
+import "./style.css";
 
 
 
 export function Button(props) {
     return ( 
-        <button 
+        <button
         className="matchbtn" {...props}>{props.text}
         </button>
     );
 };
+
+export function MessageButton(props) {
+    return ( 
+        <button
+        className="messagebutton" {...props.children}>{props.text}</button>
+    );
+};
+
+
 
 export function LoginButton(props) {
  
@@ -37,3 +46,4 @@ export function SignupButton() {
         </button>
     );
 }
+export default Button;

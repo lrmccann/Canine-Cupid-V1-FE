@@ -1,44 +1,38 @@
 import React from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Row, Container } from "../components/Grid";
 import Card from "../components/Card";
-import { Button } from "../components/Button";
 import ProfDetails from "../components/ProfDetails";
+import Col from "../components/Col";
+import Navbar from "../components/Navbar";
 
 let Profile = () => {
 
     return (
         <div>
-            <h2>Profile</h2>
-
-        <Container fluid>
-            <Row>
-                <Col size ="md-6">
-                    <Card 
-                    image="https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg" 
-                    name = "Bret"
-                    breed = "Golden Retriever"
-                    favtoy ="Alligator"
-                    />
-                </Col>
-                    <Col size="md-6">
-                        <Button
-                        text = "Match Now!"
-                        />
-                        <Button 
-                        text = "Messages"
+            <Navbar />
+            <h2 style={{margin: "0 0 0 47%" }}>Profile</h2>
+            <div className="line" style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
+            <Container fluid>
+                <Row-fluid>
+                    <Col size="md-12">
+                        <Card
+                            image="https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg"
+                            name="Bret"
+                            breed="Golden Retriever"
+                            favtoy="Alligator"
                         />
                     </Col>
-            </Row>
+                </Row-fluid>
                 <Row>
                     <ProfDetails
-                        userName = "lrmccann"
-                        location = "Chicago"
-                        interests = "Long dog walks, sniffing the roses, treats"
-                        numOfPets = "3"
-                        joinDate = "09/26/2020"
+                        userName="lrmccann"
+                        location="Chicago"
+                        interests="Long dog walks, sniffing the roses, treats"
+                        numOfPets="3"
+                        joinDate="09/26/2020"
                     />
                 </Row>
-        </Container>
+            </Container>
         </div>
     )
 
