@@ -5,7 +5,7 @@ import "./style.css";
 export function Button(props) {
     return ( 
         <button
-        className="matchbtn" {...props}>{props.text}
+            className="matchbtn" {...props}>{props.text}
         </button>
     );
 };
@@ -13,7 +13,17 @@ export function Button(props) {
 export function MessageButton(props) {
     return ( 
         <button
-        className="messagebutton" {...props.children}>{props.text}</button>
+            className="messagebutton" {...props.children}>{props.text}
+        </button>
+    );
+};
+
+export function ModalButton(props) {
+    return ( 
+        <button
+            className="appbtnpink" {...props}>
+            Ok
+        </button>
     );
 };
 
@@ -21,7 +31,8 @@ export function LoginButton(props) {
     return (
         <button 
         style={{ float: "left", marginBottom: 10 }} 
-        className="btn btn-success" {...props}>
+        className="appbtnblue"
+        {...props}>
             Log In
         </button>
     );
@@ -34,28 +45,27 @@ export function SignupButton() {
     }
     return (
         <button 
-            style={{ float: "right", marginBottom: 10 }} 
-            className="btn btn-success" 
+            className="appbtnblue"
             onClick={handleClick} >
             Sign Up
         </button>
     );
 }
 
-// export function EditProfileButton() {
-//     const history = useHistory();
-//     function handleClick() {
-//         history.push("/profile");
-//     }
-//     return (
-//         <button 
-//             style={{ float: "right", marginBottom: 10 }} 
-//             className="btn btn-success" 
-//             onClick={handleClick} >
-//             Edit Profile
-//         </button>
-//     );
-// }
+export function EditProfileButton() {
+    const history = useHistory();
+    function handleClick() {
+        history.push("/signup");
+    }
+    return (
+        <button 
+            // style={{ float: "right", marginBottom: 10 }} 
+            // className="btn btn-success" 
+            className="appbtnpink"
+            onClick={handleClick} >
+            Edit Profile
+        </button>
+    );
+}
 
-
-export default Button;
+// export default Button;

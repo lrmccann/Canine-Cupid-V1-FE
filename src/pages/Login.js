@@ -7,9 +7,9 @@ import { useHistory } from "react-router-dom";
 import { NavbarNolinks } from "../components/Navbar";
 import "./Signup.css"
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 // import Modal from "../components/Modal";
-// import Button from "../components/Button";
+import { ModalButton } from "../components/Button";
 // import Hero from "../components/Hero";
 // import Inputfield from "../components/Inputfield";
 // import { List, ListItem } from "../components/List";
@@ -54,7 +54,7 @@ const hideModal = () => {
 
   function handleAuthenticatedResponse(res) {
     if (res.data === "User not found.") {
-      let errorMsg = "User not found!";
+      let errorMsg = "User Not Found!";
       showModal(errorMsg);
       // alert("User not found")
     } else if (res.data === "Wrong password.") {
@@ -104,12 +104,12 @@ const hideModal = () => {
             {/* ----------------------Rendering Modal */}
                     <Modal show={isOpen} onHide={hideModal}>
                     <Modal.Header>
-                      <Modal.Title>Hi!</Modal.Title>
+                      <Modal.Title>Sorry!</Modal.Title>
                 
                     </Modal.Header>
                     <Modal.Body>{isErrorMessage}</Modal.Body>
                     <Modal.Footer>
-                      <button onClick={hideModal}>Ok</button>
+                      <ModalButton onClick={hideModal}>Ok</ModalButton>
                       {/* <button>Save</button> */}
                     </Modal.Footer>
                   </Modal>
