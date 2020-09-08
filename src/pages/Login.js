@@ -1,24 +1,42 @@
 import React, { useState } from "react";
-// import Hero from "../components/Hero";
-// import Inputfield from "../components/Inputfield";
-// import Button from "../components/Button";
 import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import { SignupButton, LoginButton } from "../components/Button";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
+import { NavbarNolinks } from "../components/Navbar";
+import "./Signup.css"
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+// import Modal from "../components/Modal";
+// import Button from "../components/Button";
+// import Hero from "../components/Hero";
+// import Inputfield from "../components/Inputfield";
+// import { List, ListItem } from "../components/List";
 
 function Login() {
-
   const history = useHistory();
 
   const [loginObject, setLoginObject] = useState({})
-  console.log("state",loginObject);
+  console.log("state", loginObject);
+
+////////////// Code for Modal //////
+const [isOpen, setIsOpen] = React.useState(false);
+const [isErrorMessage, setIsErrorMessage] = React.useState();
+
+const showModal = (errorMsg) => {
+  setIsOpen(true);
+  setIsErrorMessage(errorMsg);
+};
+
+const hideModal = () => {
+  setIsOpen(false);
+};
+///////////////////////////////////
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setLoginObject({...loginObject, [name]: value})
+    setLoginObject({ ...loginObject, [name]: value })
   };
 
   async function handleLoginSubmit(event) {
@@ -35,50 +53,81 @@ function Login() {
 
   function handleAuthenticatedResponse(res) {
     if (res.data === "User not found.") {
-      alert("User not found")
+      let errorMsg = "User not found!";
+      showModal(errorMsg);
+      // alert("User not found")
     } else if (res.data === "Wrong password.") {
-      alert("Wrong password.")  
+      let errorMsg = "Password is Wrong!";
+      showModal(errorMsg);
+      // alert("Wrong password.")
     } else {
-      console.log("res.data",res.data)
+      console.log("res.data", res.data)
       history.push("/profile");
     }
   }
 
   return (
     <div>
-      {/* <Hero/> */}
-      {/* <Jumbotron> */}
-       
-      {/* </Jumbotron> */}
-
+      <NavbarNolinks />
+      <h2 style={{ margin: "4% 0 0 49%" }}>Login</h2>
+      <div style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
       <Container fluid>
-        <Row>
-          <Col size="md-6"> 
-            <form>
+        <form>
+          <div className="loginDetails">
+            <div className="content">
+              <Row>
+                <Col size="md-6">
+                  {/* <form> */}
                   <Input
                     onChange={handleInputChange}
                     type="text"
-                    size="36"  
+                    size="36"
                     label="User Name: "
                     name="userName"
                     placeholder="User Name (required)"
                   />
                   <Input
                     onChange={handleInputChange}
-                    type="password" 
+                    type="password"
                     size="36"
-                    label="Password: " 
+                    label="Password: "
                     name="password"
                     placeholder="Password (required)"
                   />
                   <LoginButton
                     disabled={!(loginObject.userName && loginObject.password)}
                     onClick={handleLoginSubmit}
-                  />                
-                  <SignupButton />
-            </form>
-          </Col>
-          {/* <Col size="md-12">
+                  />
+                  <SignupButton/>
+                  
+            {/* ----------------------Rendering Modal */}
+                    <Modal show={isOpen} onHide={hideModal}>
+                    <Modal.Header>
+                      <Modal.Title>Hi!</Modal.Title>
+                
+                    </Modal.Header>
+                    <Modal.Body>{isErrorMessage}</Modal.Body>
+                    <Modal.Footer>
+                      <button onClick={hideModal}>Ok</button>
+                      {/* <button>Save</button> */}
+                    </Modal.Footer>
+                  </Modal>
+            {/* ------------------------------------ */}
+                  {/* </form> */}
+                </Col>
+              </Row>
+            </div>
+          </div>
+        </form>
+      </Container>
+    </div>
+  );
+}
+
+export default Login;
+
+// --------------------------------------------------------------
+{/* <Col size="md-12">
             <Inputfield 
             label="User Name: " 
             placeholder="User Name" 
@@ -116,10 +165,3 @@ function Login() {
             type="button">
             Sign Up</Button>
           </Col> */}
-        </Row>
-      </Container>
-    </div>
-  );
-}
-
-export default Login;

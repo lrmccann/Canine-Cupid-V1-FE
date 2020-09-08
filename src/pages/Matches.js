@@ -4,13 +4,12 @@ import React, { Component } from "react";
 // import Button from "../components/Button";
 import { Row, Container } from "../components/Grid";
 import MapContainer from "../components/MapContainer";
-// import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import Col from "../components/Col";
 import MatchCards from "../components/MatchCards";
 import { MessageButton } from "../components/Button";
 import { prependOnceListener } from "process";
 import "../components/MatchCards/images/small-profile-pic-one.png";
-import Navbar from "../components/Navbar";
 import Map from "../components/map";
 
 
@@ -18,7 +17,7 @@ function Matches(props) {
   return (
     <div>
       <Navbar />
-      <h2 style={{ margin: "0 0 0 38%" }}>Find pleasent pups nearby</h2>
+      <h2 style={{ margin: "0 0 0 38%" }}>Find pleasant pups nearby</h2>
       <div className="line" style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
       <Container fluid style={{ margin: "0 0 0 0" }}>
         <Row>

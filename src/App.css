@@ -1,0 +1,6 @@
+body{   
+    /* background-image: url("dogsworld.jpg"); */
+    background-image: url("dogsworld2.jpg");
+    background-color:rgb(247, 230, 230);
+    background-blend-mode: lighten;
+}

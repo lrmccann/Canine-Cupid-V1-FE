@@ -17,9 +17,6 @@ function ProfDetails(props){
                 </div>
             </div>
         </Col>
-
-
-
     );
 }
 export default ProfDetails;

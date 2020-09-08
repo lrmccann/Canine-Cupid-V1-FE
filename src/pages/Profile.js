@@ -4,9 +4,10 @@ import Card from "../components/Card";
 import ProfDetails from "../components/ProfDetails";
 import Col from "../components/Col";
 import Navbar from "../components/Navbar";
+// import EditProfileButton from "../components/Button";
 
 let Profile = () => {
-
+  
     return (
         <div>
             <Navbar />
@@ -32,12 +33,14 @@ let Profile = () => {
                         joinDate="09/26/2020"
                     />
                 </Row>
+                {/* <EditProfileButton
+                 onClick={handleEditSubmit}
+                /> */}
             </Container>
         </div>
     )
 
 }
-
 
 
 export default Profile;
