@@ -2,8 +2,6 @@ import React from "react"
 import { useHistory } from "react-router-dom";
 import "./style.css";
 
-
-
 export function Button(props) {
     return ( 
         <button
@@ -19,10 +17,7 @@ export function MessageButton(props) {
     );
 };
 
-
-
 export function LoginButton(props) {
- 
     return (
         <button 
         style={{ float: "left", marginBottom: 10 }} 
@@ -46,4 +41,21 @@ export function SignupButton() {
         </button>
     );
 }
+
+// export function EditProfileButton() {
+//     const history = useHistory();
+//     function handleClick() {
+//         history.push("/profile");
+//     }
+//     return (
+//         <button 
+//             style={{ float: "right", marginBottom: 10 }} 
+//             className="btn btn-success" 
+//             onClick={handleClick} >
+//             Edit Profile
+//         </button>
+//     );
+// }
+
+
 export default Button;

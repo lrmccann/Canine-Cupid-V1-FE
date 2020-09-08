@@ -11,7 +11,7 @@ import Header from "./components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Text from "./components/MyText"
 // import { profile } from "console";
-
+import "./App.css";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/matchnow" component={Matchnow} />
-          <Route exact path="/matches" component={Matches} />
+          <Route exact path="/matches" component={Matches} />       
         {/* <Contacts /> */}
       <Footer />
       {/* </Text> */}
