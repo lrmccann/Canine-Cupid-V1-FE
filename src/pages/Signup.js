@@ -226,11 +226,15 @@ import "./Signup.css"
                       rows="8"
                       placeholder="Additional Information about your Pet"
                     />
+                     </Col>
+                    </Row>
+                    <Row>
+                    <Col size="md-4">
                     <FormBtn 
                       disabled={!(formObject.userName && formObject.password)}
                       onClick={handleFormSubmit}
                     >
-                    Save
+                    Save Profile
                     </FormBtn>      
                   </Col>
                 </Row>
@@ -238,7 +242,6 @@ import "./Signup.css"
             </div>
 
           </form>
-
         </Container>
 
       </div>
