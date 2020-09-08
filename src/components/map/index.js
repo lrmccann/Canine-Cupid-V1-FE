@@ -13,8 +13,8 @@ const Map = () => {
       container: mapContainerRef.current,
       // See style options here: https://docs.mapbox.com/api/maps/#styles
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-104.9876, 39.7405],
-      zoom: 12.5,
+      center: [-77.032, 38.913],
+      zoom: 13,
     });
 
     // add navigation control (the +/- zoom buttons)
@@ -25,6 +25,8 @@ const Map = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return <div className="map-container" ref={mapContainerRef} />;
+ 
 };
+
 
 export default Map;

@@ -9,10 +9,10 @@
     max-height: 800px;
 	max-width: 800px;
 	width: 100%;
-	
+	z-index: 1
  }
  /* .marker {
-	background-image: url('svg/marker.svg');
+	background-image: url('../svg/marker.svg');
 	background-size: cover;
 	width: 24px;
 	height: 24px;
