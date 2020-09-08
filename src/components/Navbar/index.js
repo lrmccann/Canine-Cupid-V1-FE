@@ -2,12 +2,12 @@ import React from "react";
 import "./style.css";
 import { Redirect } from "react-router";
 
-
-
-function Navbar(props) {
+export function Navbar(props) {
   return (
-    <div class="navbar">
-      <a className="nav-content" href="/profile">Home</a>
+    // <div class="navbar">
+    <div className="navbar">
+      <a className="nav-content" href="/profile">My Profile</a>
+      <a className="nav-content" href="/signup">Edit Profile</a>
       <a className="nav-content" href="/matchnow">Match Now</a>
       <a className="nav-content" href="/matches">Matches</a>
       <a className="nav-content" href="/matches">Options</a>
@@ -15,5 +15,11 @@ function Navbar(props) {
   );
 }
 
+export function NavbarNolinks() {
+  return (
+    <div className="navbar">
+    </div>
+  );
+}
 
 export default Navbar;
