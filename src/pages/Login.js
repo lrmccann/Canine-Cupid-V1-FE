@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 // import Hero from "../components/Hero";
 // import Inputfield from "../components/Inputfield";
 // import { List, ListItem } from "../components/List";
+// Modals added - change to modal component later
 
 function Login() {
   const history = useHistory();
