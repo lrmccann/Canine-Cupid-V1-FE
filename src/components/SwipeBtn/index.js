@@ -12,28 +12,35 @@ export default class SwipeBtn extends React.Component {
             matchNo: []
         }
     }
-
     componentDidMount() {
+        this.fetchData();
+    }
+    fetchData = (i) => {
         // get all entities - GET
-        fetch("https://canine-cupid.herokuapp.com/users/lrmccann401/Allison401")
+        fetch("https://canine-cupid.herokuapp.com/users")
             .then(response => response.json())
             .then(response => {
-                this.setState({users: response})
-                console.log(this.state.users, "helooooooo12345")
+                this.state.users.push(response)
+                for(i = 0; i < 10; i++){
+                    this.setState({ users: [response.users._id[i], response.email] })
+                    console.log(this.state.users, "users")
+                }
             })
             .catch(err => {
                 console.log(err);
             });
-          }
+    }
 
-          
+
+
     render() {
-            function handleClickLeft() {
-                this.setState({matchNo : [this.state.users] })
-            }
-            console.log(this.state.users, "asdsgasgsdgsf")    
+        console.log(this.state.users, "match nah")
+        let handleClickLeft = () => {
+            this.setState({ matchNo: [this.state.users] })
+        }
+        console.log(this.state.matchNo, "asdsgasgsdgsf")
         return (
-            <button onClick={handleClickLeft} className={`btn-${this.props.size} btn-${this.props.variant}`}><div className={`arrow-${this.props.direction}`}></div></button>
+            <button onClick={handleClickLeft} onClick={this.fetchData} className={`btn-${this.props.size} btn-${this.props.variant}`}><div className={`arrow-${this.props.direction}`}></div></button>
         );
     };
 };

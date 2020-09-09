@@ -33,22 +33,22 @@ export default class ProfDetails extends Component {
             .catch(err => {
                 console.log(err);
             })
-            fetch("https://canine-cupid.herokuapp.com/users/lrmccann4012/Chandon4012")
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    users: response,
-                    email: response.email,
-                    park: response.park,
-                    ball: response.ball,
-                    frisbee: response.frisbee,
-                    info: response.info
-                })
-                console.log(response)
-            })
-            .catch(err => {
-                console.log(err);
-            })
+            // fetch("https://canine-cupid.herokuapp.com/users/lrmccann4012/Chandon4012")
+            // .then(response => response.json())
+            // .then(response => {
+            //     this.setState({
+            //         users: response,
+            //         email: response.email,
+            //         park: response.park,
+            //         ball: response.ball,
+            //         frisbee: response.frisbee,
+            //         info: response.info
+            //     })
+            //     console.log(response)
+            // })
+            // .catch(err => {
+            //     console.log(err);
+            // })
 
     }
 

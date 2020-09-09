@@ -1,7 +1,8 @@
 import React from "react"
 import { Row, Container } from "../components/Grid";
 import CardTwo from "../components/CardTwo";
-import SwipeBtn, {handleClickLeft}  from "../components/SwipeBtn";
+import SwipeBtn from "../components/SwipeBtn";
+import handleClickLeft from "../components/SwipeBtn";
 import ProfDetails from "../components/ProfDetails";
 import DistanceContainer from "../components/DistanceContainer";
 import Col from "../components/Col";
@@ -15,7 +16,6 @@ let Matchnow = () => {
         <Navbar />
             <h2 style={{margin: "0 0 0 27%" }}>Get yo pup the lovin they deserve and match now!</h2>
             <div className="line" style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
-
             <Container fixed>
                 <Row>
                     <Col size="md-3">
@@ -23,7 +23,6 @@ let Matchnow = () => {
                             size = "lg"
                             variant = "danger"
                             direction = "left"
-                            
                         />
                     </Col>
                     <Col size="md-6">
