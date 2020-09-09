@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 // import Hero from "../components/Hero";
 // import Inputfield from "../components/Inputfield";
 // import Button from "../components/Button";
@@ -11,6 +11,7 @@ import { MessageButton } from "../components/Button";
 import { prependOnceListener } from "process";
 import "../components/MatchCards/images/small-profile-pic-one.png";
 import Navbar from "../components/Navbar";
+import { render } from "react-dom";
 
 
 function Matches(props) {

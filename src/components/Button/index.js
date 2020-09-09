@@ -19,8 +19,6 @@ export function MessageButton(props) {
     );
 };
 
-
-
 export function LoginButton(props) {
     // const history = useHistory();
     // function handleClick() {

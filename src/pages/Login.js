@@ -9,8 +9,6 @@ import { SignupButton, LoginButton } from "../components/Button";
 import API from "../utils/API";
 
 
-
-
 function Login() {
 
   const [loginObject, setLoginObject] = useState({})
@@ -43,7 +41,6 @@ function Login() {
       {/* <Jumbotron> */}
        
       {/* </Jumbotron> */}
-
       <Container fluid>
         <Row>
           <Col size="md-6"> 

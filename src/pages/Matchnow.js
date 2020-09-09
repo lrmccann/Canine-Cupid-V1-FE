@@ -1,7 +1,7 @@
 import React from "react"
 import { Row, Container } from "../components/Grid";
 import CardTwo from "../components/CardTwo";
-import SwipeBtn from "../components/SwipeBtn";
+import SwipeBtn, {handleClickLeft}  from "../components/SwipeBtn";
 import ProfDetails from "../components/ProfDetails";
 import DistanceContainer from "../components/DistanceContainer";
 import Col from "../components/Col";
@@ -20,9 +20,10 @@ let Matchnow = () => {
                 <Row>
                     <Col size="md-3">
                         <SwipeBtn
-                            size="lg"
-                            variant="danger"
-                            direction="left"
+                            size = "lg"
+                            variant = "danger"
+                            direction = "left"
+                            
                         />
                     </Col>
                     <Col size="md-6">
@@ -36,9 +37,9 @@ let Matchnow = () => {
 
                     <Col size="md-3">
                         <SwipeBtn
-                            size="lg"
-                            variant="success"
-                            direction="right"
+                            size = "lg"
+                            variant = "success"
+                            direction = "right"
                         />
                     </Col>
                 </Row>
