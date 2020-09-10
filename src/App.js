@@ -1,4 +1,4 @@
-import React, { Profiler, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -18,7 +18,17 @@ function App() {
 
 
   const [user, setUser] = useState({})
-  console.log (user)
+  // console.log (user)
+
+  useEffect(
+    ()=>{const raw = localStorage.getItem('user')
+        setUser(JSON.parse(raw))
+    }, [] )
+
+  useEffect(
+    ()=>{localStorage.setItem('user', JSON.stringify(user));
+        console.log ("useEffect", user)
+  }, [user])
 
   // useEffect (()=>{
   //   const raw = localStorage.getItem('user')|| {}
@@ -27,7 +37,6 @@ function App() {
 
   const getData = (data) => {
     setUser (user=>{return user = data})
-    localStorage.setItem('user', JSON.stringify(data))
   }
 
   return (

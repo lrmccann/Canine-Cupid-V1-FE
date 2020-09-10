@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Col, Row, Container } from "../components/Grid";
-import { Input, FormBtn } from "../components/Form";
+import { Input } from "../components/Form";
 import { SignupButton, LoginButton } from "../components/Button";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
@@ -22,8 +22,8 @@ function Login() {
   const [loginObject, setLoginObject] = useState({})
   console.log("state", loginObject);
 
-  const { user, getData } = useContext(UserContext)
-  console.log(user)
+  const { getData } = useContext(UserContext)
+   
 ////////////// Code for Modal //////
 const [isOpen, setIsOpen] = React.useState(false);
 const [isErrorMessage, setIsErrorMessage] = React.useState();
@@ -130,43 +130,3 @@ const hideModal = () => {
 }
 
 export default Login;
-
-// --------------------------------------------------------------
-{/* <Col size="md-12">
-            <Inputfield 
-            label="User Name: " 
-            placeholder="User Name" 
-            type="text" 
-            minlength="6" 
-            maxlength="20" 
-            size="36"
-            // inputHandler = this.inputHandler
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">
-            <Inputfield 
-              label="Password: " 
-              placeholder="Password" 
-              type="password" 
-              minlength="6" 
-              maxlength="20" 
-              size="36"
-              // inputHandler = this.inputHandler
-              />
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-6">
-            <Button 
-            class="btn btn-primary" 
-            type="button">
-            Log In</Button>
-          </Col>
-          <Col size="md-6">
-          <Button 
-            class="btn btn-primary" 
-            type="button">
-            Sign Up</Button>
-          </Col> */}

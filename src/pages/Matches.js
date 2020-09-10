@@ -1,19 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 // import Hero from "../components/Hero";
 // import Inputfield from "../components/Inputfield";
 // import Button from "../components/Button";
 import { Row, Container } from "../components/Grid";
-import MapContainer from "../components/MapContainer";
+// import MapContainer from "../components/MapContainer";
 import Navbar from "../components/Navbar";
 import Col from "../components/Col";
 import MatchCards from "../components/MatchCards";
 import { MessageButton } from "../components/Button";
-import { prependOnceListener } from "process";
+// import { prependOnceListener } from "process";
 import "../components/MatchCards/images/small-profile-pic-one.png";
 import Map from "../components/map";
 
 
-function Matches(props) {
+function Matches() {
   return (
     <div>
       <Navbar />

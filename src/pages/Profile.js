@@ -1,4 +1,4 @@
-import React, { useContext }  from "react";
+import React from "react";
 import { Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import ProfDetails from "../components/ProfDetails";
