@@ -1,7 +1,7 @@
 import React from "react";
 import Col from "../Col"
 import "./style.css"
-import { Row, Container } from "../Grid";
+// import { Row, Container } from "../Grid";
 import {MessageButton} from "../Button";
 
 

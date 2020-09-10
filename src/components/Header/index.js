@@ -7,11 +7,11 @@ function Header(props) {
     <div className="row">
     <header className="header">
       <div className="picDiv">
-        <img className="pic" src={require("./images/dog-cupid.png")}></img>
+        <img className="pic" alt="cupidog" src={require("./images/dog-cupid.png")}></img>
       </div>
       <h1 className="title"><span>Canine Cupid</span></h1>
       <div className="picDivTwo">
-        <img className="pic" src={require("./images/dog-cupid.png")}></img>
+        <img className="pic" alt="cupidog"  src={require("./images/dog-cupid.png")}></img>
       </div>
     </header>
     </div>
