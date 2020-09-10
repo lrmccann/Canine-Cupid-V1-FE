@@ -69,15 +69,13 @@ function Matches(props) {
               {...MessageButton}
             />
           </Col>
+        
         </Row>
-        
         <Map />
-        
-       
       </Container>
      
     </div>
-
+ 
   );
 }
 
