@@ -1,16 +1,24 @@
 import React from "react";
 import "./style.css";
-import { Redirect } from "react-router";
+// import { Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
+import { EditProfileButton, MyProfileButton, MatchNowButton, LogOutButton, MatchesButton,  } from "../Button"
 
 export function Navbar(props) {
   return (
     // <div class="navbar">
     <div className="navbar">
-      <a className="nav-content" href="/profile">My Profile</a>
+
+    <EditProfileButton/>
+    <MyProfileButton/>
+    <MatchNowButton/>
+    <MatchesButton/>
+    <LogOutButton/>
+      {/* <a className="nav-content" href="/profile">My Profile</a>
       <a className="nav-content" href="/signup">Edit Profile</a>
       <a className="nav-content" href="/matchnow">Match Now</a>
       <a className="nav-content" href="/matches">Matches</a>
-      <a className="nav-content" href="/matches">Options</a>
+      <a className="nav-content" href="/matches">Options</a> */}
     </div>
   );
 }

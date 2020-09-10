@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext }  from "react";
 import { Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import ProfDetails from "../components/ProfDetails";
 import Col from "../components/Col";
 import Navbar from "../components/Navbar";
 // import EditProfileButton from "../components/Button";
+// import UserContext from "../utils/UserContext";
 
 let Profile = () => {
   
+    // const { user } = useContext(UserContext)
+    // console.log("profile", user)
+
     return (
         <div>
             <Navbar />
@@ -17,20 +21,19 @@ let Profile = () => {
                 <Row-fluid>
                     <Col size="md-12">
                         <Card
-                            image="https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg"
-                            name="Bret"
-                            breed="Golden Retriever"
-                            favtoy="Alligator"
+                            // image={user.photoUrl}
+                            // name={user.petName}
+                            // breed={user.breed}
+                            // age={user.age}
                         />
                     </Col>
                 </Row-fluid>
                 <Row>
                     <ProfDetails
-                        userName="lrmccann"
-                        location="Chicago"
-                        interests="Long dog walks, sniffing the roses, treats"
-                        numOfPets="3"
-                        joinDate="09/26/2020"
+                        // userName={user.userName}
+                        // location={user.city}
+                        // interests={user.info}
+                        // joinDate={user.date}
                     />
                 </Row>
                 {/* <EditProfileButton

@@ -42,6 +42,77 @@ export function SignupButton() {
     );
 }
 
+export function EditProfileButton() {
+    const history = useHistory();
+    function handleClick() {
+        history.push("/signup");
+    }
+    return (
+        <button 
+            // style={{ float: "right", marginBottom: 10 }} 
+            className="btn" 
+            onClick={handleClick} >
+            Edit Profile
+        </button>
+    );
+}
+
+export function MyProfileButton() {
+    const history = useHistory();
+    function handleClick() {
+        history.push("/profile");
+    }
+    return (
+        <button 
+            className="btn" 
+            onClick={handleClick} >
+            My Profile
+        </button>
+    );
+}
+
+export function MatchNowButton() {
+    const history = useHistory();
+    function handleClick() {
+        history.push("/matchnow");
+    }
+    return (
+        <button 
+            className="btn" 
+            onClick={handleClick} >
+            Match Now
+        </button>
+    );
+}
+
+export function MatchesButton() {
+    const history = useHistory();
+    function handleClick() {
+        history.push("/matches");
+    }
+    return (
+        <button 
+            className="btn" 
+            onClick={handleClick} >
+            Matches
+        </button>
+    );
+}
+
+
+export function LogOutButton() {
+    const history = useHistory();
+    function handleClick() {
+        history.push("/login");
+    }
+    return (
+        <button 
+            className="btn" 
+            onClick={handleClick} >
+            Log Out
+        </button>
+    );
+}
 // export function EditProfileButton() {
 //     const history = useHistory();
 //     function handleClick() {
