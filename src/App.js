@@ -1,4 +1,4 @@
-import React, { Profiler } from "react";
+import React, { Profiler, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -11,10 +11,30 @@ import Header from "./components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Text from "./components/MyText"
 // import { profile } from "console";
+import { UserProvider } from "./utils/UserContext"
 import "./App.css";
 
 function App() {
+
+
+  const [user, setUser] = useState({})
+  console.log (user)
+
+  // useEffect (()=>{
+  //   const raw = localStorage.getItem('user')|| {}
+  //   setUser(JSON.parse(raw))
+  // }, [])
+
+  const getData = (data) => {
+    setUser (user=>{return user = data})
+    localStorage.setItem('user', JSON.stringify(data))
+  }
+
   return (
+    <UserProvider value = {{
+      user,
+      getData
+    }}>
       <Router>
       {/* <Navbar sticky="top"/> */}
       {/* <Text> */}
@@ -30,6 +50,7 @@ function App() {
       <Footer />
       {/* </Text> */}
     </Router>
+    </UserProvider>
   )
 }
 
