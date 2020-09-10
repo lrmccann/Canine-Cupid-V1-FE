@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { SignupButton, LoginButton } from "../components/Button";
@@ -14,6 +14,7 @@ import { ModalButton } from "../components/Button";
 // import Inputfield from "../components/Inputfield";
 // import { List, ListItem } from "../components/List";
 // Modals added - change to modal component later
+import UserContext from "../utils/UserContext"
 
 function Login() {
   const history = useHistory();
@@ -21,6 +22,8 @@ function Login() {
   const [loginObject, setLoginObject] = useState({})
   console.log("state", loginObject);
 
+  const { user, getData } = useContext(UserContext)
+  console.log(user)
 ////////////// Code for Modal //////
 const [isOpen, setIsOpen] = React.useState(false);
 const [isErrorMessage, setIsErrorMessage] = React.useState();
@@ -63,6 +66,7 @@ const hideModal = () => {
       // alert("Wrong password.")
     } else {
       console.log("res.data", res.data)
+      getData(res.data)
       history.push("/profile");
     }
   }
