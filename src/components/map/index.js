@@ -14,7 +14,7 @@ const Map = () => {
       container: mapContainerRef.current,
       // See style options here: https://docs.mapbox.com/api/maps/#styles
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-77.032, 38.913],
+      center: [-87.6298, 41.8781],
       zoom: 13,
     });
 
