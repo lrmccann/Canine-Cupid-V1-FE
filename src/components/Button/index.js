@@ -68,9 +68,6 @@ export function EditProfileButton() {
     );
 }
 
-export function LogOutButton() {
-    const history = useHistory();
-    function handleClick() {
 export function MyProfileButton() {
     const history = useHistory();
     function handleClick() {
@@ -78,8 +75,8 @@ export function MyProfileButton() {
     }
     return (
         <button 
-            className="btn" 
-            onClick={handleClick} >
+        className="btn" 
+        onClick={handleClick} >
             My Profile
         </button>
     );
@@ -92,34 +89,38 @@ export function MatchNowButton() {
     }
     return (
         <button 
-            className="btn" 
-            onClick={handleClick} >
+        className="btn" 
+        onClick={handleClick} >
             Match Now
-    );
         </button>
+    );
 }
 
 export function MatchesButton() {
     const history = useHistory();
     function handleClick() {
         history.push("/matches");
-    return (
     }
-        <button 
-            className="btn" 
-            onClick={handleClick} >
-            Matches
-        </button>
+    return (
+    <button 
+    className="btn" 
+    onClick={handleClick} >
+        Matches
+    </button>
     );
 }
 
+export function LogOutButton() {
+    const history = useHistory();
+    function handleClick() {
         history.push("/login");
     }
     return (
         <button 
-            className="btn" 
-            onClick={handleClick} >
+        className="btn" 
+        onClick={handleClick} >
             Log Out
-    );
         </button>
+    );
+
 }
