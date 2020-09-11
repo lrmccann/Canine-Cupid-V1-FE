@@ -55,7 +55,7 @@ export function SignupButton() {
 export function EditProfileButton() {
     const history = useHistory();
     function handleClick() {
-        history.push("/signup");
+        history.push("/editprofile");
     }
     return (
         <button 
