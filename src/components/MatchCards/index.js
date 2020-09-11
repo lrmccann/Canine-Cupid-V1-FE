@@ -1,11 +1,9 @@
 import React from "react";
 import Col from "../Col"
 import "./style.css"
-// import { Row, Container } from "../Grid";
-import {MessageButton} from "../Button";
-
 
 function MatchCards(props) {
+    console.log(props)
     return (
         <div className="Container">
         <div className="mainCont flex-container">
@@ -21,17 +19,19 @@ function MatchCards(props) {
                 </Col>
                     </div>
                     <div className="messages">
-                <Col size="md-6 messages">
+                <Col size="md-7 messages">
                     <div>
                         <p className="text">{props.messages}</p>
                     </div>
                 </Col>
                     </div>
                     <div className="messageBtn">
-                <Col size="md-3 messageBtn">
-                    <MessageButton
-                    text="Message now!"
-                    />
+                <Col size="md-7 messageBtn">
+                  
+                <div className="button-container">
+                <a type="submit" className="btn btn-primary" href={`mailto:doggie@gmail.com?subject=RW:${props.messages}`}>Mail Me</a>
+           
+            </div> 
                     
                 </Col>
                 </div>
