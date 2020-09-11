@@ -106,7 +106,7 @@ const hideModal = () => {
                   <SignupButton/>
                   
             {/* ----------------------Rendering Modal */}
-                    <Modal show={isOpen} onHide={hideModal}>
+                    <Modal className="my-modal" show={isOpen} onHide={hideModal}>
                     <Modal.Header>
                       <Modal.Title>Sorry!</Modal.Title>
                 

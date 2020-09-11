@@ -1,53 +1,22 @@
-import React, { useState} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
 import Navbar from "../components/Navbar";
 import "./Signup.css"
+import UserContext from "../utils/UserContext";
 
-// import Hero from "../components/Hero";
-// import Inputfield from "../components/Inputfield";
-// import Button from "../components/Button";
-// import { List, ListItem } from "../components/List";
 
-// // function inputHandler(){
-// // 
-// // }
-
-// function Signup() {
-
-//   // const [1,2]=setState({
-//   // userName
-//   // password
-//   // })
 // ------------------ 
-  function Signup() {
+  function EditProfile() {
+    const { user } = useContext(UserContext)
+    console.log("user", user)
+
     // Setting our component's initial state
     // const [books, setBooks] = useState([])
     // const [users, setUsers] = useState([])
     const [formObject, setFormObject] = useState({})
     console.log("state",formObject);
-  
-    // Load all books and store them with setBooks
-    // useEffect(() => {
-    //   loadBooks()
-    // }, [])
-  
-    // Loads all books and sets them to books
-    // function loadBooks() {
-    //   API.getBooks()
-    //     .then(res => 
-    //       setBooks(res.data)
-    //     )
-    //     .catch(err => console.log(err));
-    // };
-  
-    // Deletes a book from the database with a given id, then reloads books from the db
-    // function deleteBook(id) {
-    //   API.deleteBook(id)
-    //     .then(res => loadBooks())
-    //     .catch(err => console.log(err));
-    // }
   
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
@@ -59,27 +28,12 @@ import "./Signup.css"
     // Then reload User from the database
     function handleFormSubmit(event) {
       event.preventDefault();
-      if (formObject.userName && formObject.password) {
-          API.saveUser({
-          password: formObject.password,
-          userData: {
-              userName: formObject.userName,
-              petName: formObject.petName,
-              zipcode: formObject.zipcode,
-              city: formObject.city,
-              breed: formObject.breed,
-              age: formObject.age,
-              park: formObject.park,
-              ball: formObject.ball,
-              frisbee: formObject.frisbee,
-              email: formObject.email,
-              photoUrl: formObject.photoUrl,
-              info: formObject.info
-          }
-        })
+      console.log("user.userData.userName",user.userName) 
+          API.updateUser({
+            userData: formObject
+        },user.userName)
           .then(res => console.log("response",res))
-          .catch(error => console.log(error.response));
-      }
+          .catch(error => console.log(error.response));   
     };
   
 // ------------------  
@@ -87,7 +41,7 @@ import "./Signup.css"
     return (
       <div>
         <Navbar />
-        <h2 style={{ margin: "0 0 0 48%" }}>Sign Up</h2>
+        <h2 style={{ margin: "0 0 0 47%" }}>Edit  Profile</h2>
         <div style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
         <Container fluid>
           <form>
@@ -98,6 +52,7 @@ import "./Signup.css"
                   <Col size="md-4">
                     <Input
                       onChange={handleInputChange}
+                      defaultValue = {user.userName}
                       type="text"
                       minLength="6"
                       maxLength="30"
@@ -105,9 +60,11 @@ import "./Signup.css"
                       label="User Name (Required): "
                       name="userName"
                       placeholder="User Name (required)"
+                      disabled
                     />
-                    <Input
+                    {/* <Input
                       onChange={handleInputChange}
+                     
                       type="password"
                       minLength="8"
                       maxLength="30"
@@ -115,9 +72,11 @@ import "./Signup.css"
                       label="Password (Required): "
                       name="password"
                       placeholder="Password (required)"
-                    />
+
+                    /> */}
                     <Input
                       onChange={handleInputChange}
+                      defaultValue = {user.email}
                       type="email"
                       // minlength="6" 
                       // maxlength="30" 
@@ -130,6 +89,7 @@ import "./Signup.css"
                   <Col size="md-4">
                     <Input
                       onChange={handleInputChange}
+                      defaultValue = {user.zipcode}
                       type="number"
                       // minlength="6" 
                       // maxlength="30" 
@@ -140,6 +100,7 @@ import "./Signup.css"
                     />
                     <Input
                       onChange={handleInputChange}
+                      defaultValue = {user.city}
                       type="text"
                       // minlength="6" 
                       // maxlength="30" 
@@ -160,6 +121,7 @@ import "./Signup.css"
                   <Col size="md-4">
                     <Input
                       onChange={handleInputChange}
+                      defaultValue = {user.petName}
                       type="text"
                       // minlength="6" 
                       // maxlength="30" 
@@ -170,6 +132,7 @@ import "./Signup.css"
                     />
                     <Input
                       onChange={handleInputChange}
+                      defaultValue = {user.breed}
                       type="text"
                       maxLength="50"
                       size="40"
@@ -179,6 +142,7 @@ import "./Signup.css"
                     />
                     <Input
                       onChange={handleInputChange}
+                      defaultValue = {user.age}
                       type="number"
                       maxLength="2"
                       size="40"
@@ -231,10 +195,10 @@ import "./Signup.css"
                     <Row>
                     <Col size="md-4">
                     <FormBtn 
-                      disabled={!(formObject.userName && formObject.password)}
+                      // disabled={!(formObject.userName && formObject.password)}
                       onClick={handleFormSubmit}
                     >
-                    Save Profile
+                    Save Changes
                     </FormBtn>      
                   </Col>
                 </Row>
@@ -248,6 +212,6 @@ import "./Signup.css"
     );
   }
 
-export default Signup;
+export default EditProfile;
 
    

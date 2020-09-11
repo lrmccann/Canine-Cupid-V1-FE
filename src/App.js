@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
 import Signup from "./pages/Signup";
 import Matchnow from "./pages/Matchnow";
 import Matches from "./pages/Matches";
@@ -13,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { profile } from "console";
 import { UserProvider } from "./utils/UserContext"
 import "./App.css";
+import TestFormForValidations from "./pages/TestFormForValidations";
 
 function App() {
 
@@ -53,8 +55,10 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/editprofile" component={EditProfile} />
           <Route exact path="/matchnow" component={Matchnow} />
           <Route exact path="/matches" component={Matches} />       
+          <Route exact path="/signupvalidated" component={TestFormForValidations} />
         {/* <Contacts /> */}
       <Footer />
       {/* </Text> */}
