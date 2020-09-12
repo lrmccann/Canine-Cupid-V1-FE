@@ -6,7 +6,8 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    border-radius:17.5px;
+    border-radius:14px;
+    background-color: white;
 }
 .image{
     height: 100%;
@@ -40,5 +41,11 @@
     float: left;
     position: absolute;
     text-align: center;
-    margin-left: 81%;
+    margin-left: 82%;
+    border-radius: 25px;
+}
+
+.btn-fix{
+    height: 73px;
+    width: 205px;
 }

@@ -7,8 +7,8 @@
   text-align: left;
   float: left;
   position: relative;
+  background-color: #8ABAD3FF ;
 }
-
 .card > .img-container {
   height: 60%;
   overflow: hidden;
@@ -23,14 +23,15 @@
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 20px;
+  padding-top: 2%;
 }
 
 .card > .content > ul {
   list-style-type: none;
 }
 
-.card > .content > ul > li {
-  margin-top: 18px;
+.card > .content > ul > li > h4 {
+  margin-top: 1px;
 }
 
 .card > .remove {

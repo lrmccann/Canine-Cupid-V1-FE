@@ -21,7 +21,7 @@ function MatchCards(props) {
                     <div className="messages">
                 <Col size="md-7 messages">
                     <div>
-                        <p className="text">{props.messages}</p>
+                        <p className="text">{props.messages}{props.userName}</p>
                     </div>
                 </Col>
                     </div>
@@ -29,8 +29,7 @@ function MatchCards(props) {
                 <Col size="md-7 messageBtn">
                   
                 <div className="button-container">
-                <a type="submit" className="btn btn-primary" href={`mailto:doggie@gmail.com?subject=RW:${props.messages}`}>Mail Me</a>
-           
+                <a style={{borderTopRightRadius: "15px", borderBottomRightRadius: "15px"}}type="submit" className="btn btn-primary btn-fix" href={`mailto:doggie@gmail.com?subject=RW:${props.messages}`}><p style={{marginTop: "9%"}}>Message Now</p></a>
             </div> 
                     
                 </Col>

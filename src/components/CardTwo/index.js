@@ -8,7 +8,7 @@ function CardTwo(props) {
     <Col size="md-4">
       <div className="card">
         <div className="img-container">
-          <img alt={props.name} src={props.image} />
+          <img alt={props.name} src={props.image} style={{width: "423px"}} />
         </div>
         <div className="content">
           <ul>

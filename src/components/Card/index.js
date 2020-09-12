@@ -13,18 +13,18 @@ function Card () {
     <Col size="md-6">
       <div className="card">
         <div className="img-container">
-          <img alt={user.petName} src={user.photoUrl} />
+          <img alt={user.petName} src={user.photoUrl} style={{width: "423px"}} />
         </div>
         <div className="content">
           <ul>
             <li>
-            <h5>Name: {user.petName}</h5> 
+            <h4>Name: {user.petName}</h4> 
             </li>
             <li>
-              <h5>Breed: {user.breed}</h5> 
+              <h4>Breed: {user.breed}</h4> 
             </li>
             <li>
-              <h5>Age: {user.age}</h5> 
+              <h4>Age: {user.age}</h4> 
             </li>
           </ul>
         </div>
