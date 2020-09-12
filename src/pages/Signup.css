@@ -44,3 +44,13 @@
     color:black;
     padding-top: 15px;
 }
+
+/* .modal-backdrop {
+    background-color: green;
+  } */
+
+ .my-modal .modal-content {
+    background-image: url("../dogsworld2.jpg");
+    background-color:rgb(247, 230, 230);
+    background-blend-mode: lighten;
+  }
