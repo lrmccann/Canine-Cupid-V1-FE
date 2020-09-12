@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Row, Container } from "../components/Grid";
 import CardTwo from "../components/CardTwo";
 import SwipeBtn from "../components/SwipeBtn";
@@ -6,9 +6,20 @@ import ProfDetails from "../components/ProfDetails";
 import DistanceContainer from "../components/DistanceContainer";
 import Col from "../components/Col";
 import Navbar from "../components/Navbar";
+import API from "../utils/API";
 
 let Matchnow = () => {
 
+    const [allUsers, setAllUseres] = useState([])
+    console.log("stateMatchnow", allUsers);
+
+    useEffect (()=>{
+        async function getAllUsersId () {
+            const result =  await API.getAllUsers()
+            return result.data}
+        const data = getAllUsersId()
+        setAllUseres (data)
+    }, [] )  
 
     return (
         <div>

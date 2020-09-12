@@ -20,7 +20,7 @@ function Login() {
   const history = useHistory();
 
   const [loginObject, setLoginObject] = useState({})
-  console.log("state", loginObject);
+  console.log("stateLogin", loginObject);
 
   const { getData } = useContext(UserContext)
    
@@ -68,8 +68,15 @@ const hideModal = () => {
       console.log("res.data", res.data)
       getData(res.data)
       history.push("/profile");
-    }
-  }
+    };
+  };
+
+  async function handleSignupSubmit(event) {
+    event.preventDefault();
+    history.push("/signup");
+  };
+
+
 
   return (
     <div>
@@ -103,7 +110,9 @@ const hideModal = () => {
                     disabled={!(loginObject.userName && loginObject.password)}
                     onClick={handleLoginSubmit}
                   />
-                  <SignupButton/>
+                  <SignupButton
+                    onClick={handleSignupSubmit}
+                  />
                   
             {/* ----------------------Rendering Modal */}
                     <Modal className="my-modal" show={isOpen} onHide={hideModal}>
