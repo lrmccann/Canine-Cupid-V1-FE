@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { setState, useState, useContext} from "react";
 import { useHistory } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import API from "../utils/API";
@@ -16,14 +16,7 @@ import "./Signup.css"
 
     const history = useHistory();
 
-    const [formObject, setFormObject] = useState({})
-    console.log("state",formObject);
-  
-    // Handles updating component state when the user types into the input field
-    function handleInputChange(event) {
-      const { name, value } = event.target;
-      setFormObject({...formObject, [name]: value})
-    };
+   
   
     // When the form is submitted, use the API.saveUser method to save the User data
     function handleFormSubmit(event) {
@@ -75,6 +68,73 @@ import "./Signup.css"
       setIsOpen(false);
     };
     ///////////////////////////////////
+
+
+
+ ///////////////////////
+ const [formerrors, setFormErrors] = useState({})
+  // errors: {
+  //   userName: '',
+  //   petName: ''
+    // email: '',
+    // password: '',
+  // }
+// })
+//////////////////////
+// console.log("formerrors",formerrors);
+
+    const [formObject, setFormObject] = useState({})
+    console.log("formObject",formObject);
+  
+    // Handles updating component state when the user types into the input field
+    function handleInputChange(event) {
+      event.preventDefault();
+      const { name, value } = event.target;
+  ///////////////////////    
+  switch (name) {
+    case 'userName': 
+      // errors.userName = 
+        if (value.length < 5){
+          console.log("User Name less then 5")
+          setFormErrors({...formerrors, [name]: 'User Name must be 5 characters long!'})
+        }
+
+
+        // value.length < 5
+        //   ? setFormErrors({...formerrors, [name]: 'User Name must be 5 characters long!'})
+        //   : setFormErrors({...formerrors, [name]: ''});
+      break;
+      // case 'petName': 
+      // errors.petName = 
+      //   value.length < 3
+      //     ?  setErrors('Pet Name must be 3 characters long!')
+      //     :  setErrors('');
+      // break;
+    // case 'email': 
+    //   errors.email = 
+    //     validEmailRegex.test(value)
+    //       ? ''
+    //       : 'Email is not valid!';
+    //   break;
+    // case 'password': 
+    //   errors.password = 
+    //     value.length < 8
+    //       ? 'Password must be 8 characters long!'
+    //       : '';
+    //   break;
+    default:
+      break;
+  }
+
+  // this.setState({errors, [name]: value}, ()=> {
+      
+  // })
+  ///////////////////////    
+      setFormObject({...formObject, [name]: value})
+    };
+
+
+
 
     // ------------------  
 

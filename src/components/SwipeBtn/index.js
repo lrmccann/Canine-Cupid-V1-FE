@@ -8,9 +8,16 @@ function SwipeBtn (props) {
     const [variant] = useState(props.variant);
     const [direction] = useState(props.direction);
 
-return (
-<button className={`btn-${size} btn-${variant}`}><div className={`arrow-${direction}`}></div></button>
-);
+    return (
+    <button
+    className={`btn-${size} btn-${variant}`}{...props}
+    >
+        <div 
+        className={`arrow-${direction}`}
+        >            
+        </div>
+    </button>
+    );
 }
 
 export default SwipeBtn;
