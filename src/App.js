@@ -17,7 +17,6 @@ import "./App.css";
 
 function App() {
 
-
   const [user, setUser] = useState({})
   // console.log (user)
 
