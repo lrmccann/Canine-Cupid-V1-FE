@@ -38,15 +38,17 @@ export function LoginButton(props) {
     );
 }
 
-export function SignupButton() {
-    const history = useHistory();
-    function handleClick() {
-        history.push("/signup");
-    }
+export function SignupButton(props) {
+    // const history = useHistory();
+    // function handleClick() {
+    //     history.push("/signup");
+    // }
     return (
         <button 
             className="appbtnblue"
-            onClick={handleClick} >
+            {...props}
+            // onClick={handleClick} 
+            >
             Sign Up
         </button>
     );
