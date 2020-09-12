@@ -47,7 +47,7 @@ const hideModal = () => {
   async function handleLoginSubmit(event) {
     event.preventDefault();
     if (loginObject.userName && loginObject.password) {
-      await API.getUser({
+      await API.checkUser({
         userName: loginObject.userName,
         password: loginObject.password
       })

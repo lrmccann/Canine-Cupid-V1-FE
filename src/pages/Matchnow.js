@@ -19,7 +19,23 @@ let Matchnow = () => {
             return result.data}
         const data = getAllUsersId()
         setAllUseres (data)
-    }, [] )  
+    }, [] )
+    
+    let id = "5f5cf21aa6a0230017b8ce4b"
+
+   async function getNextUserData(){
+       return await API.getUsersById(id)
+    }
+
+    function handleYesSubmit() {
+        console.log("Yes")
+        console.log(getNextUserData())
+
+    }
+    function handleNoSubmit() {
+        console.log("No")
+        console.log(getNextUserData())
+    }
 
     return (
         <div>
@@ -34,6 +50,7 @@ let Matchnow = () => {
                             size="lg"
                             variant="danger"
                             direction="left"
+                            onClick={handleNoSubmit}
                         />
                     </Col>
                     <Col size="md-6">
@@ -50,6 +67,7 @@ let Matchnow = () => {
                             size="lg"
                             variant="success"
                             direction="right"
+                            onClick={handleYesSubmit}
                         />
                     </Col>
                 </Row>
