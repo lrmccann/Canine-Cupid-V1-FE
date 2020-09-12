@@ -30,8 +30,8 @@ export default {
         );
     },
 
-    getUsersById: async function(userData){
-        console.log("API.getUsersById was called")
+    getUserById: async function(userData){
+        console.log("API.getUserById was called")
         const token = getToken()
         return await axios.get(
             "https://canine-cupid.herokuapp.com/users/"+userData, 

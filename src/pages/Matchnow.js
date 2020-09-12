@@ -24,7 +24,7 @@ let Matchnow = () => {
     let id = "5f5cf21aa6a0230017b8ce4b"
 
    async function getNextUserData(){
-       return await API.getUsersById(id)
+       return await API.getUserById(id)
     }
 
     function handleYesSubmit() {
