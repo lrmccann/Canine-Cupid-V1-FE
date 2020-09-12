@@ -1,30 +1,31 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import Modal from 'react-bootstrap/Modal';
+import API from "../utils/API";
+import UserContext from "../utils/UserContext"
 import { Col, Row, Container } from "../components/Grid";
 import { Input } from "../components/Form";
 import { SignupButton, LoginButton } from "../components/Button";
-import API from "../utils/API";
-import { useHistory } from "react-router-dom";
 import { NavbarNolinks } from "../components/Navbar";
+import { ModalButton } from "../components/Button";
 import "./Signup.css"
-import Modal from 'react-bootstrap/Modal';
 // import Button from 'react-bootstrap/Button';
 // import Modal from "../components/Modal";
-import { ModalButton } from "../components/Button";
 // import Hero from "../components/Hero";
 // import Inputfield from "../components/Inputfield";
 // import { List, ListItem } from "../components/List";
 // Modals added - change to modal component later
-import UserContext from "../utils/UserContext"
 
 function Login() {
+  
+  const { getData } = useContext(UserContext)
+  
   const history = useHistory();
 
   const [loginObject, setLoginObject] = useState({})
   console.log("stateLogin", loginObject);
 
-  const { getData } = useContext(UserContext)
-   
-////////////// Code for Modal //////
+   ////////////// Code for Modal //////
 const [isOpen, setIsOpen] = React.useState(false);
 const [isErrorMessage, setIsErrorMessage] = React.useState();
 
@@ -71,7 +72,7 @@ const hideModal = () => {
     };
   };
 
-  async function handleSignupSubmit(event) {
+  function handleSignupSubmit(event) {
     event.preventDefault();
     history.push("/signup");
   };

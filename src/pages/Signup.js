@@ -1,53 +1,23 @@
-import React, { useState} from "react";
+import React, { useState, useContext} from "react";
+import { useHistory } from "react-router-dom";
+import Modal from 'react-bootstrap/Modal';
 import API from "../utils/API";
+import UserContext from "../utils/UserContext"
 import { Col, Row, Container } from "../components/Grid";
 import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
 import Navbar from "../components/Navbar";
+import { ModalButton } from "../components/Button";
 import "./Signup.css"
 
-// import Hero from "../components/Hero";
-// import Inputfield from "../components/Inputfield";
-// import Button from "../components/Button";
-// import { List, ListItem } from "../components/List";
-
-// // function inputHandler(){
-// // 
-// // }
-
-// function Signup() {
-
-//   // const [1,2]=setState({
-//   // userName
-//   // password
-//   // })
 // ------------------ 
   function Signup() {
-    // Setting our component's initial state
-    // const [books, setBooks] = useState([])
-    // const [users, setUsers] = useState([])
+
+    const { getData } = useContext(UserContext)
+
+    const history = useHistory();
+
     const [formObject, setFormObject] = useState({})
     console.log("state",formObject);
-  
-    // Load all books and store them with setBooks
-    // useEffect(() => {
-    //   loadBooks()
-    // }, [])
-  
-    // Loads all books and sets them to books
-    // function loadBooks() {
-    //   API.getBooks()
-    //     .then(res => 
-    //       setBooks(res.data)
-    //     )
-    //     .catch(err => console.log(err));
-    // };
-  
-    // Deletes a book from the database with a given id, then reloads books from the db
-    // function deleteBook(id) {
-    //   API.deleteBook(id)
-    //     .then(res => loadBooks())
-    //     .catch(err => console.log(err));
-    // }
   
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
@@ -55,11 +25,10 @@ import "./Signup.css"
       setFormObject({...formObject, [name]: value})
     };
   
-    // When the form is submitted, use the API.saveBook method to save the User data
-    // Then reload User from the database
+    // When the form is submitted, use the API.saveUser method to save the User data
     function handleFormSubmit(event) {
       event.preventDefault();
-      if (formObject.userName && formObject.password) {
+      if (formObject.userName && formObject.password && formObject.petName && formObject.email) {
           API.saveUser({
           password: formObject.password,
           userData: {
@@ -77,12 +46,37 @@ import "./Signup.css"
               info: formObject.info
           }
         })
-          .then(res => console.log("response",res))
+          .then(res => handleSignupResponse(res))
           .catch(error => console.log(error.response));
       }
     };
-  
-// ------------------  
+      // Then alert the User if the User name had been taken otherwise update Context with new User data
+    function handleSignupResponse(res) {
+      if (res.data === "User name already taken.") {
+        let errorMsg = res.data;
+        showModal(errorMsg);
+      } else {
+        console.log("res.data", res.data)
+        getData(res.data)
+        history.push("/profile");
+      };
+    };
+       
+    ////////////// Code for Modal //////
+    const [isOpen, setIsOpen] = useState(false);
+    const [isErrorMessage, setIsErrorMessage] = useState();
+
+    const showModal = (errorMsg) => {
+      setIsOpen(true);
+      setIsErrorMessage(errorMsg);
+    };
+
+    const hideModal = () => {
+      setIsOpen(false);
+    };
+    ///////////////////////////////////
+
+    // ------------------  
 
     return (
       <div>
@@ -124,7 +118,7 @@ import "./Signup.css"
                       size="40"
                       label="Email: "
                       name="email"
-                      placeholder="Email"
+                      placeholder="Email (required)"
                     />
                   </Col>
                   <Col size="md-4">
@@ -231,19 +225,33 @@ import "./Signup.css"
                     <Row>
                     <Col size="md-4">
                     <FormBtn 
-                      disabled={!(formObject.userName && formObject.password)}
+                      disabled={!(formObject.userName && formObject.password && formObject.petName && formObject.email)}
                       onClick={handleFormSubmit}
                     >
                     Save Profile
-                    </FormBtn>      
+                    </FormBtn>
+
+                      {/* ----------------------Rendering Modal */}
+                      <Modal className="my-modal" show={isOpen} onHide={hideModal}>
+                    <Modal.Header>
+                      <Modal.Title>Sorry!</Modal.Title>
+                
+                    </Modal.Header>
+                    <Modal.Body>{isErrorMessage}</Modal.Body>
+                    <Modal.Footer>
+                      <ModalButton onClick={hideModal}>Ok</ModalButton>
+                      {/* <button>Save</button> */}
+                    </Modal.Footer>
+                  </Modal>
+            {/* ------------------------------------ */}
+                  {/* </form> */}
+
                   </Col>
                 </Row>
               </div>
             </div>
-
           </form>
         </Container>
-
       </div>
     );
   }
