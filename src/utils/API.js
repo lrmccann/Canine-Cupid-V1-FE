@@ -26,10 +26,8 @@ export default {
     getUser: async function(userData) {
         console.log("API.getUser was called", userData)
         // var myJSON = JSON.stringify(userData);
-        const token = getToken()
         return await axios.get(
-            "https://canine-cupid.herokuapp.com/users/"+userData.userName+"/"+userData.password,
-            { headers: {'session-token': token}}
+            "https://canine-cupid.herokuapp.com/users/"+userData.userName+"/"+userData.password
         );
     },
 
