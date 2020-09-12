@@ -14,7 +14,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { profile } from "console";
 import { UserProvider } from "./utils/UserContext"
 import "./App.css";
-import TestFormForValidations from "./pages/TestFormForValidations";
 
 function App() {
 
@@ -58,7 +57,6 @@ function App() {
           <Route exact path="/editprofile" component={EditProfile} />
           <Route exact path="/matchnow" component={Matchnow} />
           <Route exact path="/matches" component={Matches} />       
-          <Route exact path="/signupvalidated" component={TestFormForValidations} />
         {/* <Contacts /> */}
       <Footer />
       {/* </Text> */}
