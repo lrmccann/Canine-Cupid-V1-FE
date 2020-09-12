@@ -5,6 +5,7 @@ import ProfDetails from "../components/ProfDetails";
 import Col from "../components/Col";
 import Navbar from "../components/Navbar";
 import { EditProfileButton } from "../components/Button";
+import Map from "../components/map";
 
 let Profile = () => {
   
@@ -32,9 +33,11 @@ let Profile = () => {
                         // joinDate={user.date}
                     />
                 </Row>
+                
                 <EditProfileButton
                 //  onClick={handleEditSubmit}
                 />
+                <Map />
             </Container>
         </div>
     )
