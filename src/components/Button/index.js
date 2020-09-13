@@ -126,3 +126,17 @@ export function LogOutButton() {
     );
 
 }
+
+// export function SaveChangesButton() {
+//     const history = useHistory();
+//     function handleClick() {
+//         history.push("/profile");
+//     }
+//     return (
+//         <button
+//             className="appbtnpink"
+//             onClick={handleClick} >
+//             Edit Profile
+//         </button>
+//     );
+// }

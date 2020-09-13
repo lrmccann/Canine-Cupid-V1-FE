@@ -13,11 +13,8 @@ import "./Signup.css"
   function Signup() {
 
     const { getData } = useContext(UserContext)
-
     const history = useHistory();
-
    
-  
     // When the form is submitted, use the API.saveUser method to save the User data
     function handleFormSubmit(event) {
       event.preventDefault();
@@ -91,6 +88,7 @@ import "./Signup.css"
       event.preventDefault();
       const { name, value } = event.target;
   ///////////////////////    
+  
   switch (name) {
     case 'userName': 
       // errors.userName = 

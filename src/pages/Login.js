@@ -9,12 +9,14 @@ import { SignupButton, LoginButton } from "../components/Button";
 import { NavbarNolinks } from "../components/Navbar";
 import { ModalButton } from "../components/Button";
 import "./Signup.css"
+
 // import Button from 'react-bootstrap/Button';
 // import Modal from "../components/Modal";
 // import Hero from "../components/Hero";
 // import Inputfield from "../components/Inputfield";
 // import { List, ListItem } from "../components/List";
 // Modals added - change to modal component later
+
 
 function Login() {
   
@@ -25,7 +27,7 @@ function Login() {
   const [loginObject, setLoginObject] = useState({})
   console.log("stateLogin", loginObject);
 
-   ////////////// Code for Modal //////
+////////////// Code for Modal //////
 const [isOpen, setIsOpen] = React.useState(false);
 const [isErrorMessage, setIsErrorMessage] = React.useState();
 
@@ -60,11 +62,9 @@ const hideModal = () => {
     if (res.data === "User not found.") {
       let errorMsg = "User Not Found!";
       showModal(errorMsg);
-      // alert("User not found")
     } else if (res.data === "Wrong password.") {
       let errorMsg = "Password is Wrong!";
       showModal(errorMsg);
-      // alert("Wrong password.")
     } else {
       console.log("res.data", res.data)
       getData(res.data)
@@ -77,8 +77,6 @@ const hideModal = () => {
     history.push("/signup");
   };
 
-
-
   return (
     <div>
       <NavbarNolinks />
@@ -89,8 +87,7 @@ const hideModal = () => {
           <div className="loginDetails">
             <div className="content">
               <Row>
-                <Col size="md-6">
-                  {/* <form> */}
+                <Col size="md-6">                 
                   <Input
                     onChange={handleInputChange}
                     type="text"
@@ -113,8 +110,7 @@ const hideModal = () => {
                   />
                   <SignupButton
                     onClick={handleSignupSubmit}
-                  />
-                  
+                  />               
             {/* ----------------------Rendering Modal */}
                     <Modal className="my-modal" show={isOpen} onHide={hideModal}>
                     <Modal.Header>
@@ -124,11 +120,9 @@ const hideModal = () => {
                     <Modal.Body>{isErrorMessage}</Modal.Body>
                     <Modal.Footer>
                       <ModalButton onClick={hideModal}>Ok</ModalButton>
-                      {/* <button>Save</button> */}
                     </Modal.Footer>
                   </Modal>
             {/* ------------------------------------ */}
-                  {/* </form> */}
                 </Col>
               </Row>
             </div>
