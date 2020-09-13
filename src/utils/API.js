@@ -43,7 +43,7 @@ export default {
         console.log("API.updateUser was called", userDataName)
         const token = getToken()
         return await axios.put(
-            "https://canine-cupid.herokuapp.com/users/"+userDataName, userData,
+            "https://canine-cupid.herokuapp.com/user/"+userDataName, userData,
             { headers: {'session-token': token}}
         );
     },

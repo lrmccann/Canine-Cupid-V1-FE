@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
+// import { SaveChangesButton } from "../components/Button";
 import Navbar from "../components/Navbar";
 import "./Signup.css"
 import UserContext from "../utils/UserContext";
 
 function EditProfile() {
+
+  const { getData } = useContext(UserContext)
+  const history = useHistory();
+
   const { user } = useContext(UserContext)
   console.log("user", user)
 
@@ -29,8 +35,22 @@ function EditProfile() {
     API.updateUser({
       userData: formObject
     }, user.userName)
-      .then(res => console.log("response", res))
+      // .then(res => console.log("response", res))
+      .then(res => handleEditProfileResponse(res))
       .catch(error => console.log(error.response));
+  };
+
+  function handleEditProfileResponse(res) {
+    console.log("res.data1", res.data)
+    // if (res.data === "User name already taken.") {
+    //   let errorMsg = res.data;
+    //   showModal(errorMsg);
+    // } else {
+      // console.log("res.data2", res.data)
+      getData(res.data)
+      // user(res.data)
+      history.push("/profile");
+    // };
   };
 
   // ------------------  
@@ -191,10 +211,14 @@ function EditProfile() {
               <Row>
                 <Col size="md-4">
                   <FormBtn
+                  //  disabled={!(formObject.petName && formObject.email)}
                     onClick={handleFormSubmit}
                   >
                     Save Changes
                   </FormBtn>
+                  {/* <SaveChangesButton type="button"
+                      onClick={handleFormSubmit}
+                  /> */}
                 </Col>
               </Row>
             </div>
