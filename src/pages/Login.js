@@ -89,7 +89,7 @@ const hideModal = () => {
     <div>
       <NavbarNolinks />
       <h2 style={{ margin: "4% 0 0 49%" }}>Login</h2>
-      <div style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
+      <div style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
       <Container fluid>
         <form>
           <div className="loginDetails">

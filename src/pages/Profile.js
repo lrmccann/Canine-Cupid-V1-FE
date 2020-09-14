@@ -16,8 +16,8 @@ let Profile = () => {
     return (
         <div>
             <Navbar />
-            <h2 style={{margin: "0 0 0 47%" }}>Hi {user.userName}!</h2>
-            <div className="line" style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
+            <h1 style={{margin: "0 0 0 27%" }}>Welcome to your profile {user.userName}!</h1>
+            <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
             <Container fluid>
                 <Row-fluid>
                     <Col size="md-12">
@@ -40,6 +40,8 @@ let Profile = () => {
                 <EditProfileButton
                 //  onClick={handleEditSubmit}
                 />
+                <h1 style={{marginTop: "12%", marginLeft: "34%"}}>Pet friendly parks near you: </h1>
+                <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%", marginTop: "5%" }}></div>
                 <Map />
             </Container>
         </div>

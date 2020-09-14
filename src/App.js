@@ -25,6 +25,7 @@ function App() {
   console.log ("newUserName", newUserName)
   const [allUsersNames, setAllUsersNames] = useState([]);
   console.log ("allUsersNames", allUsersNames);
+  const [userForMatchesPage , setUserForMatchesPage] = useState([])
 
   useEffect(
     ()=>{const raw = localStorage.getItem('user')
@@ -57,30 +58,35 @@ function App() {
     setAllUsersNames (allUsersNames=>{return allUsersNames=data})
   }
 
+  const getAllMatchesForMatchesPage = (data) => {
+    setUserForMatchesPage (userForMatchesPage=>{return userForMatchesPage=data})
+  }
   return (
     <UserProvider value = {{
       user,
       newUserData,
       newUserName,
       allUsersNames,
+      userForMatchesPage,
 
       getData,
       getNewUserData,
       getNewUserName,
-      getAllUsersNames
+      getAllUsersNames,
+      getAllMatchesForMatchesPage
     }}>
       <Router>
       {/* <Navbar sticky="top"/> */}
       {/* <Text> */}
         <Header />
          {/* <Wrapper>  */}
-          <Route exact path="/" component={Login} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/editprofile" component={EditProfile} />
-          <Route exact path="/matchnow" component={Matchnow} />
-          <Route exact path="/matches" component={Matches} />       
+          <Route exact activeClassName path="/" component={Login} />
+          <Route exact activeClassName  path="/login" component={Login} />
+          <Route exact activeClassName  path="/signup" component={Signup} />
+          <Route exact activeClassName  path="/profile" component={Profile} />
+          <Route exact activeClassName  path="/editprofile" component={EditProfile} />
+          <Route exact activeClassName  path="/matchnow" component={Matchnow} />
+          <Route exact activeClassName  path="/matches" component={Matches} />       
         {/* <Contacts /> */}
       <Footer />
       {/* </Text> */}

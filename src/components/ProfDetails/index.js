@@ -10,7 +10,7 @@ function ProfDetails(props){
                 <div className="content">
                     <h1>Profile Details</h1>
                     <div className="line"></div>
-                    <h4>{props.children}</h4>
+                    <h4 className="contentOne">{props.children}</h4>
                 </div>
             </div>
         </Col>
