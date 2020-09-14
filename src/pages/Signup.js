@@ -14,6 +14,7 @@ import "./Signup.css"
 
     const { getData } = useContext(UserContext)
     const history = useHistory();
+    let errorMsg = "";
    
     // When the form is submitted, use the API.saveUser method to save the User data
     function handleFormSubmit(event) {
@@ -46,13 +47,35 @@ import "./Signup.css"
         let errorMsg = res.data;
         showModal(errorMsg);
       } else {
+//--------------------------   
+
+        
+        // if ( (!('userName' in formObject) || (formObject.userName.length === 0)) || (!('password' in formObject) || (formObject.password.length === 0)) || (!('email' in formObject) || (formObject.email.length === 0)) || (!('petName' in formObject) || (formObject.petName.length === 0)))
+        console.log("start")
+        console.log("len",formObject.breed, typeof(formObject.breed))
+        // console.log("breed", breed.value)
+        let breedValid = 'breed' in formObject && (formObject.breed.length > 0 && formObject.breed.length < 9)
+        let emailValid = 'email' in formObject && formObject.email.length > 0
+        let fieldsValid = breedValid && emailValid
+        console.log("abc",formObject, 'breed' in formObject)
+        if (!fieldsValid) 
+        // if (formObject.breed === undefined)        
+        // if (typeof(formObject.breed) == 'undefined')
+        {
+          let errorMsg = "Please fill all the required fields i.e. Username, Password, Email and Petname";
+          alert(errorMsg)
+          showModal(errorMsg);
+        }
+       
+//-------------------------- 
+
         console.log("res.data", res.data)
         getData(res.data)
         history.push("/profile");
       };
     };
-       
-    ////////////// Code for Modal //////
+    
+   ////////////// Code for Modal //////
     const [isOpen, setIsOpen] = useState(false);
     const [isErrorMessage, setIsErrorMessage] = useState();
 
