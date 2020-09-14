@@ -3,15 +3,17 @@ import { useHistory } from "react-router-dom";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, Checkbox, TextArea, FormBtn } from "../components/Form";
-// import { SaveChangesButton } from "../components/Button";
 import Navbar from "../components/Navbar";
-import "./Signup.css"
 import UserContext from "../utils/UserContext";
+import Modal from 'react-bootstrap/Modal';
+import { ModalButton } from "../components/Button";
+import "./Signup.css"
+// import { SaveChangesButton } from "../components/Button";
 
 function EditProfile() {
-
   const { getData } = useContext(UserContext)
   const history = useHistory();
+  const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
   const { user } = useContext(UserContext)
   console.log("user", user)
@@ -31,14 +33,39 @@ function EditProfile() {
   // Then reload User from the database
   function handleFormSubmit(event) {
     event.preventDefault();
+
+    let formValid = formFrontendValidations();
+    console.log("formValid", formValid)
+
     console.log("user.userName", user.userName)
-    API.updateUser({
-      userData: formObject
-    }, user.userName)
-      // .then(res => console.log("response", res))
-      .then(res => handleEditProfileResponse(res))
-      .catch(error => console.log(error.response));
+    if (formValid === true) {
+      API.updateUser({
+        userData: formObject
+      }, user.userName)
+        .then(res => handleEditProfileResponse(res))
+        .catch(error => console.log(error.response));
+    }
   };
+
+   //--------------------------
+   function formFrontendValidations(formValid) { 
+    let validEmailFormat = validEmailRegex.test(formObject.email)  
+    let emailValid = 'email' in formObject && formObject.email.length > 0 && validEmailFormat
+    let petNameValid = 'petName' in formObject && formObject.petName.length > 0    
+ 
+    console.log("valids", emailValid, petNameValid) 
+    let fieldsValid = emailValid && petNameValid
+
+    if (!fieldsValid) {
+      let errorMsg = "Please fill ALL the required fields correctly i.e. Email (in valid @format) and Petname (required)";
+      showModal(errorMsg);
+      return false
+    }
+    else {
+      return true
+    }
+  }
+  //-------------------------- 
 
   function handleEditProfileResponse(res) {
     console.log("res.data1", res.data)
@@ -53,12 +80,26 @@ function EditProfile() {
     // };
   };
 
+  ////////////// Code for Modal //////
+  const [isOpen, setIsOpen] = useState(false);
+  const [isErrorMessage, setIsErrorMessage] = useState();
+
+  const showModal = (errorMsg) => {
+    setIsOpen(true);
+    setIsErrorMessage(errorMsg);
+  };
+
+  const hideModal = () => {
+    setIsOpen(false);
+  };
+  ///////////////////////////////////
+
   // ------------------  
 
   return (
     <div>
       <Navbar />
-      <h2 style={{ margin: "0 0 0 47%" }}>Edit  Profile</h2>
+      <h2 style={{ fontFamily: "Georgia, serif" , margin: "0 0 0 47%" }}>Edit  Profile</h2>
       <div style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
       <Container fluid>
         <form>
@@ -71,12 +112,12 @@ function EditProfile() {
                     onChange={handleInputChange}
                     defaultValue={user.userName}
                     type="text"
-                    minLength="6"
-                    maxLength="30"
+                    minLength="5"
+                    maxLength="20"
                     size="40"
                     label="User Name (Can not change this): "
                     name="userName"
-                    placeholder="User Name (required)"
+                    placeholder="User Name (5-20 characters required)"
                     disabled
                   />
                   {/* <Input
@@ -100,7 +141,7 @@ function EditProfile() {
                     size="40"
                     label="Email: "
                     name="email"
-                    placeholder="Email"
+                    placeholder="Email (Required and in email format)"
                   />
                 </Col>
                 <Col size="md-4">
@@ -108,19 +149,15 @@ function EditProfile() {
                     onChange={handleInputChange}
                     defaultValue={user.zipcode}
                     type="number"
-                    // minlength="6" 
-                    // maxlength="30" 
                     size="10"
                     label="Zipcode: "
-                    name="zipcode"
+                    name="zipCode"
                     placeholder="Zipcode"
                   />
                   <Input
                     onChange={handleInputChange}
                     defaultValue={user.city}
                     type="text"
-                    // minlength="6" 
-                    // maxlength="30" 
                     size="40"
                     label="City: "
                     name="city"
@@ -140,8 +177,6 @@ function EditProfile() {
                     onChange={handleInputChange}
                     defaultValue={user.petName}
                     type="text"
-                    // minlength="6" 
-                    // maxlength="30" 
                     size="40"
                     label="Your Pet's Name (Required): "
                     name="petName"
@@ -161,7 +196,7 @@ function EditProfile() {
                     onChange={handleInputChange}
                     defaultValue={user.age}
                     type="number"
-                    maxLength="2"
+                    maxLength="3"
                     size="40"
                     label="Your Pet's Age: "
                     name="age"
@@ -170,7 +205,7 @@ function EditProfile() {
                   <Input
                     onChange={handleInputChange}
                     type="text"
-                    size="40"
+                    size="200"
                     label="URL to your Pet's Photograph: "
                     name="photoUrl"
                     placeholder="URL to your Pet's Photograph"
@@ -211,7 +246,7 @@ function EditProfile() {
               <Row>
                 <Col size="md-4">
                   <FormBtn
-                  //  disabled={!(formObject.petName && formObject.email)}
+                   disabled={!(formObject.petName && formObject.email)}
                     onClick={handleFormSubmit}
                   >
                     Save Changes
@@ -219,6 +254,17 @@ function EditProfile() {
                   {/* <SaveChangesButton type="button"
                       onClick={handleFormSubmit}
                   /> */}
+                    {/* ----------------------Rendering Modal */}
+                    <Modal className="my-modal" show={isOpen} onHide={hideModal}>
+                    <Modal.Header>
+                      <Modal.Title>Sorry!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{isErrorMessage}</Modal.Body>
+                    <Modal.Footer>
+                      <ModalButton onClick={hideModal}>Ok</ModalButton>
+                    </Modal.Footer>
+                  </Modal>
+                  {/* ------------------------------------ */}
                 </Col>
               </Row>
             </div>

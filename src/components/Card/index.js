@@ -18,13 +18,13 @@ function Card () {
         <div className="content">
           <ul>
             <li>
-            <h5>Name: {user.petName}</h5> 
+            <h4>Name:&nbsp; {user.petName}</h4> 
             </li>
             <li>
-              <h5>Breed: {user.breed}</h5> 
+              <h4>Breed:&nbsp; {user.breed}</h4> 
             </li>
             <li>
-              <h5>Age: {user.age}</h5> 
+              <h4>Age:&nbsp;&nbsp;&nbsp; {user.age}</h4> 
             </li>
           </ul>
         </div>
