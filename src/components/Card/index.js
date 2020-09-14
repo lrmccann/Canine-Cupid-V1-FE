@@ -10,8 +10,8 @@ function Card (props) {
         <div className="img-container">
           <img alt={props.petName} src={props.photoUrl} />
         </div>
-        <div className="content">
-          <ul>
+        <h4 className="content" >{props.children}
+          {/* <ul>
             <li>
             <h4>Name:&nbsp; {user.petName}</h4> 
             </li>
@@ -21,8 +21,8 @@ function Card (props) {
             <li>
               <h4>Age:&nbsp;&nbsp;&nbsp; {user.age}</h4> 
             </li>
-          </ul>
-        </div>
+          </ul> */}
+        </h4>
       </div>
     </Col>
 

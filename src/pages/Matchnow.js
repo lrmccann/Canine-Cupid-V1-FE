@@ -8,13 +8,15 @@ import Col from "../components/Col";
 import Navbar from "../components/Navbar";
 import API from "../utils/API";
 import UserContext from "../utils/UserContext"
+import Moment from 'react-moment';
 
 let Matchnow = () => {
     
     const { user, allUsersNames, newUserData, newUserName, getNewUserData, getNewUserName } = useContext(UserContext)
     console.log("allUsersNames", allUsersNames, "newUser", newUserData);
 
-    const readableDate = new Date(newUserData.date).toDateString();
+    let readableDate = <Moment format="YYYY/MM/DD">{newUserData.date}</Moment>
+    // const readableDate = new Date(newUserData.date).toDateString();
     // const [allUsers, setAllUseres] = useState([])
     //     console.log("allUsers", allUsers);
         
@@ -47,8 +49,8 @@ let Matchnow = () => {
         .then(response => getNewUserData(response.data))
     }
 
-    async function setNewMatches (name1, name2){   
-        await API.setUsersMatches(name1, name2)
+    async function setNewMatches (name1, name2, sessionToken){   
+        await API.setUsersMatches(name1, name2, sessionToken)
         .then(response => console.log(response))
     }
     // useEffect (()=>{
@@ -92,7 +94,7 @@ let Matchnow = () => {
  
     function handleYesSubmit() {
         console.log("Yes")
-        setNewMatches(user.userName, newUserName)
+        setNewMatches(user.userName, newUserName, user.sessionToken)
         getNextUser(allUsersNames)
         // switchToNextUser()
 
@@ -121,9 +123,9 @@ let Matchnow = () => {
                     </Col>
                     <Col size="md-8">
                     <Card petName={newUserData.petName} photoUrl={newUserData.photoUrl}>
-                        <div>Pet name: {newUserData.petName}</div> 
-                        <div>Breed: {newUserData.breed}</div> 
-                        <div>Age: {newUserData.age}</div>
+                        <div>Pet name:  &nbsp;&nbsp;{newUserData.petName}</div> 
+                        <div>Breed:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.breed}</div> 
+                        <div>Age:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.age}</div>
                         </Card>
                     </Col>
 
@@ -141,10 +143,10 @@ let Matchnow = () => {
                 <Row>
                     <Col size="md-12">
                         <ProfDetails>
-                        <div>Location: {newUserData.city}</div>
-                        <div>Zip Code:  {newUserData.zipCode}</div>
-                        <div>About pet: {newUserData.info}</div>
-                        <div>Join Date: {readableDate}</div>
+                        <div>Location:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.city}</div>
+                        <div>Zip Code:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.zipCode}</div>
+                        <div>About pet:  &nbsp;&nbsp;&nbsp; {newUserData.info}</div>
+                        <div>Join Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{readableDate}</div>
                         </ProfDetails>
                     </Col>
                     <Col size="md-12">
