@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import { useHistory } from "react-router-dom";
+import API from "../../utils/API";
+import UserContext from "../../utils/UserContext"
 import "./style.css";
 
 export function Button(props) {
@@ -39,15 +41,10 @@ export function LoginButton(props) {
 }
 
 export function SignupButton(props) {
-    // const history = useHistory();
-    // function handleClick() {
-    //     history.push("/signup");
-    // }
     return (
         <button 
             className="appbtnblue"
             {...props}
-            // onClick={handleClick} 
             >
             Sign Up
         </button>
@@ -61,8 +58,6 @@ export function EditProfileButton() {
     }
     return (
         <button 
-            // style={{ float: "right", marginBottom: 10 }} 
-            // className="btn btn-success" 
             className="appbtnpink"
             onClick={handleClick} >
             Edit Profile
@@ -85,9 +80,22 @@ export function MyProfileButton() {
 }
 
 export function MatchNowButton() {
-    const history = useHistory();
-    function handleClick() {
-        history.push("/matchnow");
+    const { allUsersNames, getNewUserData, getNewUserName } = useContext(UserContext)
+    const history =  useHistory();
+        
+    async function getUserData (name) {
+        console.log ("getNewUser",name)
+        await API.getUserByName(name)
+        // .then(response=>console.log(response))
+        .then((response) =>{
+            getNewUserData(response.data); 
+            getNewUserName(response.data.userName)
+        }) 
+    }
+
+    async function handleClick() {
+        await getUserData(allUsersNames[0])
+        .then(history.push("/matchnow"));
     }
     return (
         <button 
