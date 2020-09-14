@@ -17,8 +17,14 @@ import "./App.css";
 
 function App() {
 
-  const [user, setUser] = useState({})
-  // console.log (user)
+  const [user, setUser] = useState({});
+  console.log ("user", user);
+  const [newUserData, setNewUserData] = useState({});
+  console.log ("newUserData", newUserData);
+  const [newUserName, setNewUserName] = useState("");
+  console.log ("newUserName", newUserName)
+  const [allUsersNames, setAllUsersNames] = useState([]);
+  console.log ("allUsersNames", allUsersNames);
 
   useEffect(
     ()=>{const raw = localStorage.getItem('user')
@@ -39,10 +45,29 @@ function App() {
     setUser (user=>{return user = data})
   }
 
+  const getNewUserData = (data) => {
+    setNewUserData (newUserData=>{return newUserData = data})
+  }
+
+  const getNewUserName = (data) => {
+    setNewUserName (newUserName=>{return newUserName = data})
+  }
+
+  const getAllUsersNames = (data) => {
+    setAllUsersNames (allUsersNames=>{return allUsersNames=data})
+  }
+
   return (
     <UserProvider value = {{
       user,
-      getData
+      newUserData,
+      newUserName,
+      allUsersNames,
+
+      getData,
+      getNewUserData,
+      getNewUserName,
+      getAllUsersNames
     }}>
       <Router>
       {/* <Navbar sticky="top"/> */}

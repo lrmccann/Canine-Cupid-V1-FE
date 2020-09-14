@@ -30,11 +30,11 @@ export default {
         );
     },
 
-    getUserById: async function(userData){
-        console.log("API.getUserById was called")
+    getUserByName: async function(userData){
+        console.log("API.getUserById was called", userData)
         const token = getToken()
         return await axios.get(
-            "https://canine-cupid.herokuapp.com/users/"+userData, 
+            "https://canine-cupid.herokuapp.com/user/"+userData, 
             { headers: {'session-token': token}}
         );
     },    
@@ -47,13 +47,31 @@ export default {
             { headers: {'session-token': token}}
         );
     },
-
-    getAllUsers: async function(){
-        console.log("API.getAllUsers was called")
-        const token = getToken()
+    // getting All Names as an array
+    getAllUsers: async function(sessionToken){
+        console.log("API.getAllUsers was called", sessionToken)
         return await axios.get(
             "https://canine-cupid.herokuapp.com/users", 
+            { headers: {'session-token': sessionToken}}
+        );
+    },
+
+    getMatchesByName: async function(userData) {
+        console.log("API.getMatchesByName was called", userData)
+        const token = getToken()
+        return await axios.get(
+            "https://canine-cupid.herokuapp.com/usersallmatches/"+userData,
+            { headers: {'session-token': token}}
+        );
+    },
+
+    setUsersMatches: async function(userData1,userData2) {
+        console.log("API.setUsersMatches was called", userData1, userData2)
+        const token = getToken()
+        return await axios.put(
+            "http://localhost:3001/usersmatches/"+userData1+"/"+userData2,
             { headers: {'session-token': token}}
         );
     }
+
 };

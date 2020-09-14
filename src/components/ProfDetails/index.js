@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import Col from "../Col"
 import "./style.css"
 import UserContext from "../../utils/UserContext";
 import Moment from 'react-moment';
 
 function ProfDetails(props){
-    const { user } = useContext(UserContext)
-    console.log("ProfDatails", user)
-    // let date = user.date.toDateString()
 
     return (
         <Col size ="md-12">

@@ -1,19 +1,14 @@
-import React, { useContext } from "react";
-// import CardBtn from "../CardBtn";
-import "./style.css";
+import React from "react";
 import Col from "../Col";
-import UserContext from "../../utils/UserContext";
+import "./style.css";
 
-function Card () {
-
-  const { user } = useContext(UserContext)
-  console.log("Card", user)
+function Card (props) {
 
   return (
     <Col size="md-6">
       <div className="card">
         <div className="img-container">
-          <img alt={user.petName} src={user.photoUrl} />
+          <img alt={props.petName} src={props.photoUrl} />
         </div>
         <div className="content">
           <ul>

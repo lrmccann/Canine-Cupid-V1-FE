@@ -17,6 +17,60 @@ function Signup() {
   // When the form is submitted, use the API.saveUser method to save the User data
   function handleFormSubmit(event) {
     event.preventDefault();
+  function Signup() {
+
+    const { getData } = useContext(UserContext)
+    const history = useHistory();
+    let errorMsg = "";
+   
+    // When the form is submitted, use the API.saveUser method to save the User data
+   async function handleFormSubmit(event) {
+      event.preventDefault();
+      if (formObject.userName && formObject.password && formObject.petName && formObject.email) {
+         await API.saveUser({
+          password: formObject.password,
+          userData: {
+              userName: formObject.userName,
+              petName: formObject.petName,
+              zipCode: formObject.zipcode,
+              city: formObject.city,
+              breed: formObject.breed,
+              age: formObject.age,
+              park: formObject.park,
+              ball: formObject.ball,
+              frisbee: formObject.frisbee,
+              email: formObject.email,
+              photoUrl: formObject.photoUrl,
+              info: formObject.info
+          }
+        })
+          .then(res => handleSignupResponse(res))
+          .catch(error => console.log(error.response));
+      }
+    };
+      // Then alert the User if the User name had been taken otherwise update Context with new User data
+    function handleSignupResponse(res) {
+      if (res.data === "User name already taken.") {
+        let errorMsg = res.data;
+        showModal(errorMsg);
+      } else {        
+        // if ( (!('userName' in formObject) || (formObject.userName.length === 0)) || (!('password' in formObject) || (formObject.password.length === 0)) || (!('email' in formObject) || (formObject.email.length === 0)) || (!('petName' in formObject) || (formObject.petName.length === 0)))
+        console.log("start")
+        console.log("len",formObject.breed, typeof(formObject.breed))
+        // console.log("breed", breed.value)
+        let breedValid = 'breed' in formObject && (formObject.breed.length > 0 && formObject.breed.length < 9)
+        let emailValid = 'email' in formObject && formObject.email.length > 0
+        let fieldsValid = breedValid && emailValid
+        console.log("abc",formObject, 'breed' in formObject)
+        if (!fieldsValid) 
+        // if (formObject.breed === undefined)        
+        // if (typeof(formObject.breed) == 'undefined')
+        {
+          let errorMsg = "Please fill all the required fields i.e. Username, Password, Email and Petname";
+          alert(errorMsg)
+          showModal(errorMsg);
+        }
+       
     
     let formValid = formFrontendValidations();
     console.log("formValid", formValid)
@@ -102,7 +156,6 @@ function Signup() {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value })
   };
-  // -------------------------------------------------- 
 
   return (
     <div>
@@ -164,6 +217,73 @@ function Signup() {
                   />
                 </Col>
               </Row>
+    return (
+      <div>
+        <Navbar />
+        <h2 style={{ margin: "0 0 0 48%" }}>Sign Up</h2>
+        <div style={{ border: "solid black 1px", margin: "4% 10% 5% 10%" }}></div>
+        <Container fluid>
+          <form>
+              <div className="userDetails">
+              <div className="content">
+                <Row>
+                  <h3>Your Details:</h3>
+                  <Col size="md-4">
+                    <Input
+                      onChange={handleInputChange}
+                      type="text"
+                      minLength="6"
+                      maxLength="30"
+                      size="40"
+                      label="User Name (Required): "
+                      name="userName"
+                      placeholder="User Name (required)"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      type="password"
+                      minLength="8"
+                      maxLength="30"
+                      size="40"
+                      label="Password (Required): "
+                      name="password"
+                      placeholder="Password (required)"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      type="email"
+                      // minlength="6" 
+                      // maxlength="30" 
+                      size="40"
+                      label="Email (Required): "
+                      name="email"
+                      placeholder="Email (required)"
+                    />
+                  </Col>
+                  <Col size="md-4">
+                    <Input
+                      onChange={handleInputChange}
+                      type="number"
+                      // minlength="6" 
+                      // maxlength="30" 
+                      size="10"
+                      label="Zipcode: "
+                      name="zipcode"
+                      placeholder="Zipcode"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      type="text"
+                      // minlength="6" 
+                      // maxlength="30" 
+                      size="40"
+                      label="City: "
+                      name="city"
+                      placeholder="City"
+                    />
+                  </Col>
+                </Row>
+              </div>
             </div>
           </div>
 
