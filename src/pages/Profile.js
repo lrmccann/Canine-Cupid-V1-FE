@@ -7,48 +7,45 @@ import Col from "../components/Col";
 import Navbar from "../components/Navbar";
 import { EditProfileButton } from "../components/Button";
 import Map from "../components/map";
+import Moment from 'react-moment';
 
 let Profile = () => {
     const { user } = useContext(UserContext)
 
-    let readableDate = new Date(user.date).toDateString();
+    let readableDate = <Moment format="YYYY/MM/DD">{user.date}</Moment>
 
     return (
         <div>
             <Navbar />
-            <h2 style={{fontFamily: "Georgia, serif" , margin: "0 0 0 47%" }}>Profile</h2>
-            <h2 style={{margin: "0 0 0 47%" }}>Welcome to your profile {user.userName}!</h2>
+            <h2 style={{fontFamily: "Georgia, serif" , margin: "0 0 0 37%" }}>Welcome to your profile {user.userName}!</h2>
             <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
             <Container fluid>
                 <Row-fluid>
                     <Col size="md-12">
                         <Card petName={user.petName} photoUrl={user.photoUrl}>
-                        <div>Pet name: {user.petName}</div> 
-                        <div>Breed: {user.breed}</div> 
-                        <div>Age: {user.age}</div>
+                        <div>Pet name: &nbsp;{user.petName}</div> 
+                        <div>Breed: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.breed}</div> 
+                        <div>Age: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.age}</div>
                         </Card>
                     </Col>
                 </Row-fluid>
                 <Row>
                     <ProfDetails>
-                    <div>Location: {user.city}</div>
-                    <div>Zip Code: {user.zipCode} </div>
-                    <div>About pet: {user.info}</div>
-                    <div>Join Date: {readableDate}</div>
+                    <div>Location: &nbsp;&nbsp;&nbsp;&nbsp;{user.city}</div>
+                    <div>Zip Code: &nbsp;&nbsp;&nbsp;&nbsp;{user.zipCode} </div>
+                    <div>Join Date: &nbsp;&nbsp;&nbsp;{readableDate}</div>
+                    <div>About pet: &nbsp;&nbsp;{user.info}</div>
                     </ProfDetails>
                 </Row>
                 
                 <EditProfileButton
-                //  onClick={handleEditSubmit}
                 />
-                <h1 style={{marginTop: "12%", marginLeft: "34%"}}>Pet friendly parks near you: </h1>
+                <h1 style={{fontFamily: "Georgia, serif", marginTop: "12%", marginLeft: "34%"}}>Pet friendly parks near you: </h1>
                 <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%", marginTop: "5%" }}></div>
                 <Map />
             </Container>
         </div>
     )
-
 }
-
 
 export default Profile;
