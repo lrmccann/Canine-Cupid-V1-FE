@@ -7,6 +7,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     border-radius:17.5px;
+    background-color: white;
 }
 .image{
     height: 100%;
@@ -14,6 +15,7 @@
     float: left;
     position: absolute;
     border-right: solid black 1px;
+    margin-top:2px;
 }
 .img{
     height: 40px;
@@ -40,5 +42,15 @@
     float: left;
     position: absolute;
     text-align: center;
-    margin-left: 81%;
+    margin-left: 82%;
+}
+
+.button-message{
+    height: 73px;
+    width: 202px;
+}
+
+.btnText{
+    margin-top:10.5%;
+    font-family: Arial
 }

@@ -12,6 +12,7 @@ function ProfDetails(props){
                 <div className="content">
                     <h2>Profile Details</h2>
                     <div className="line"></div>
+                    <h4 className="contentOne">{props.children}</h4>
                     <h4>Username: &nbsp;&nbsp; {user.userName}</h4>
                     <h4>Location: &nbsp;&nbsp;&nbsp; {user.city}&nbsp;,&nbsp;&nbsp;&nbsp; Zipcode:&nbsp; {user.zipCode} </h4>
                     <h4>About pet: &nbsp; {user.info}</h4>
