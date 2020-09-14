@@ -19,15 +19,15 @@ import "./Signup.css"
    
   
     // When the form is submitted, use the API.saveUser method to save the User data
-    function handleFormSubmit(event) {
+   async function handleFormSubmit(event) {
       event.preventDefault();
       if (formObject.userName && formObject.password && formObject.petName && formObject.email) {
-          API.saveUser({
+         await API.saveUser({
           password: formObject.password,
           userData: {
               userName: formObject.userName,
               petName: formObject.petName,
-              zipcode: formObject.zipcode,
+              zipCode: formObject.zipcode,
               city: formObject.city,
               breed: formObject.breed,
               age: formObject.age,
@@ -176,7 +176,7 @@ import "./Signup.css"
                       // minlength="6" 
                       // maxlength="30" 
                       size="40"
-                      label="Email: "
+                      label="Email (Required): "
                       name="email"
                       placeholder="Email (required)"
                     />

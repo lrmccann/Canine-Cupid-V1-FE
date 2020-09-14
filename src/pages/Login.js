@@ -18,7 +18,7 @@ import "./Signup.css"
 
 function Login() {
   
-  const { getData } = useContext(UserContext)
+  const { getData, getAllUsersNames } = useContext(UserContext)
   
   const history = useHistory();
 
@@ -56,6 +56,11 @@ const hideModal = () => {
     }
   };
 
+  async function getAllNames (sessionToken) {
+    await API.getAllUsers(sessionToken)
+    .then(res=>getAllUsersNames(res.data))
+}
+
   function handleAuthenticatedResponse(res) {
     if (res.data === "User not found.") {
       let errorMsg = "User Not Found!";
@@ -66,8 +71,11 @@ const hideModal = () => {
       showModal(errorMsg);
       // alert("Wrong password.")
     } else {
-      console.log("res.data", res.data)
-      getData(res.data)
+      console.log("res.data", res.data);
+      getData(res.data);
+      getAllNames(res.data.sessionToken);
+      // getAllUsersID(allID);
+      // console.log("allID",allID);
       history.push("/profile");
     };
   };
