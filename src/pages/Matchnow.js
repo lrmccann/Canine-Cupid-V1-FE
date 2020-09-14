@@ -106,7 +106,7 @@ let Matchnow = () => {
     return (
         <div>
         <Navbar />
-                <h2 style={{margin: "0 0 0 36.5%" }}>{user.userName} Match Now!!</h2>
+            <h2 style={{fontFamily: "Georgia, serif" , margin: "0 0 0 27%" }}>Get yo pup the lovin they deserve and match now!</h2>
             <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
 
             <Container fixed>

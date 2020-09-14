@@ -11,7 +11,17 @@ function Card (props) {
           <img alt={props.petName} src={props.photoUrl} />
         </div>
         <div className="content">
-        <h4>{props.children}</h4>
+          <ul>
+            <li>
+            <h4>Name:&nbsp; {user.petName}</h4> 
+            </li>
+            <li>
+              <h4>Breed:&nbsp; {user.breed}</h4> 
+            </li>
+            <li>
+              <h4>Age:&nbsp;&nbsp;&nbsp; {user.age}</h4> 
+            </li>
+          </ul>
         </div>
       </div>
     </Col>

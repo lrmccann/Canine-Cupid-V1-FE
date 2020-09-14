@@ -16,7 +16,8 @@ let Profile = () => {
     return (
         <div>
             <Navbar />
-            <h1 style={{margin: "0 0 0 27%" }}>Welcome to your profile {user.userName}!</h1>
+            <h2 style={{fontFamily: "Georgia, serif" , margin: "0 0 0 47%" }}>Profile</h2>
+            <h2 style={{margin: "0 0 0 47%" }}>Welcome to your profile {user.userName}!</h2>
             <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
             <Container fluid>
                 <Row-fluid>
