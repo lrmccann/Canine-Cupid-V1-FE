@@ -5,12 +5,11 @@ import "./style.css"
 
 function DistanceContainer(props){
 return (
-<Col size = "md-12">
 <div className = "distanceContainer">
-<h5>This cute pup is located only {props.distance} miles away</h5>
+<h3>{props.userName} is located only :</h3>
+<div className="line" style={{ border: "solid black 2px" }}></div>
 
 </div>
-</Col>
 )
 };
 

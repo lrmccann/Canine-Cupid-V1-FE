@@ -66,43 +66,7 @@ let Matchnow = () => {
         await API.setUsersMatches(name1, name2)
         .then((response) => {console.log(response)})
     }
-    // useEffect (()=>{
-    //     getNewUser(allUsersNames[0]);
-    // }, [])   
-        // async function getAllUsersNames () {
-        //     const result = await API.getAllUsers()
-        //             .then(response => response.json())
-    //    console.log(allUsers[0], "AAAALLLLUSERS")
-    //    await API.getUserById(allUsers[0])
-       // .then(ABCDEF())
-       // .then(res => {setNewUser(res)})
-   // setIsLoaded(true)
-  
-    //        const userId = async function getUserId() {
-    //        const id = allUsers[0]
-    //         await API.getUserById(id)
-    //         .then(response => response.json())
-    //         console.log(newUser)
-    //    }
-    //    const XYZ = userId.result
-    //    getUserId()
-  
 
-    // useEffect (
-    //     ()=>{
-    //         getNewUsersId()
-    //         async function getAllUsersNames () {
-    //             await API.getAllUsers()
-    //             .then(response => response.json())
-    //         }
-    //         const data = getAllUsersNames()
-    //     console.log(data)
-    //     setAllUseres (data.data)
-    // }, [allUsers] )
-
-    // useEffect (
-    //     ()=>{
-    // }, [newUser] )
     const userForArr = newUserData.userName;
  
     function handleYesSubmit() {
@@ -136,9 +100,9 @@ let Matchnow = () => {
                     </Col>
                     <Col size="md-6">
                     <Card petName={newUserData.petName} photoUrl={newUserData.photoUrl}>
-                        <div>Pet name:  &nbsp;&nbsp;{newUserData.petName}</div> 
-                        <div>Breed:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.breed}</div> 
-                        <div>Age:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.age}</div>
+                        <div style={{paddingTop: "3%", paddingLeft: "4%"}}>Pet name:  &nbsp;&nbsp;{newUserData.petName}</div> 
+                        <div style={{paddingTop: "3%", paddingLeft: "4%"}}>Breed:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.breed}</div> 
+                        <div style={{paddingTop: "3%" ,paddingLeft: "4%"}}>Age:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.age}</div>
                         </Card>
                     </Col>
 
@@ -154,23 +118,18 @@ let Matchnow = () => {
                 </Container>
                 <Container fluid>
                 <Row>
-                    <Col size="md-2"/>
-                    <Col size="md-8">
+                    <Col size="md-10">
+                        <div >
                         <ProfDetails>
-                        <div>Location:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.city}</div>
-                        <div>Zip Code:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {newUserData.zipCode}</div>
-                        <div>Join Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{readableDate}</div>
-                        <div>About my pet:  &nbsp; {newUserData.info}</div>
+                        <div>Username:&nbsp;{newUserData.userName} </div>
+                        <div style={{paddingTop: "3%"}}>Location:&nbsp;&nbsp;&nbsp;&nbsp;{newUserData.city}</div>
+                        <div style={{paddingTop: "3%" }}>Zip Code:&nbsp;&nbsp;&nbsp;{newUserData.zipCode}</div>
+                        <div style={{paddingTop: "3%" }}>Join Date:&nbsp;&nbsp;{readableDate}</div>
+                        <div style={{paddingTop: "3%"}}>About my pet:&nbsp;&nbsp;{newUserData.info}</div>
+                        <div style={{paddingTop: "3%"}}>This cute pup is located only : 2.3 miles away</div>
                         </ProfDetails>
-                        <Row>  
-                            <Col size="md-12">
-                                <DistanceContainer
-                                    distance="2.3"
-                                />
-                            </Col>
-                        </Row>
+                        </div>
                     </Col>
-                    <Col size="md-2"/>
                 </Row>
             </Container>
         </div>

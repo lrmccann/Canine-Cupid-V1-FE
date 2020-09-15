@@ -57,7 +57,7 @@ export function EditProfileButton() {
         history.push("/editprofile");
     }
     return (
-        <button 
+        <button style={{marginLeft:"22%"}}
             className="appbtnpink"
             onClick={handleClick} >
             Edit Profile
@@ -112,9 +112,18 @@ export function MatchNowButton() {
 }
 
 export function MatchesButton() {
+    const {userForMatchesPage, getAllMatchesForMatchesPage, user} = useContext(UserContext)
     const history = useHistory();
-    function handleClick() {
-        history.push("/matches");
+    let newVar = user
+    const getUserDataById = async () => {
+        await API.getMatchesByName(newVar.userName)
+        .then(response => getAllMatchesForMatchesPage(response.data))
+        
+    }
+    async function handleClick(user) {
+        console.log(userForMatchesPage, "anytext")
+        await getUserDataById(user)
+        .then(history.push("/matches"))
     }
     return (
     <button 

@@ -14,8 +14,13 @@
     width: 10%;
     float: left;
     position: absolute;
-    border-right: solid black 1px;
     margin-top:2px;
+    padding-left: .5%;
+    
+}
+
+.image-col{
+    height: 19%;
 }
 .img{
     height: 40px;
@@ -26,8 +31,7 @@
     width: 52%;
     float: left;
     position: absolute;
-    border-right: solid black 1px;
-    margin-left: 32%;
+    margin-left: 31%;
     white-space: nowrap;
 }
 .text{

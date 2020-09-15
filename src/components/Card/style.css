@@ -8,9 +8,13 @@
   float: left;
   position: relative;
   margin-right: 5%;
-  margin-left: 5;
+  margin-left: 7.5%;
+  margin-bottom: 20%;
+  margin-top: 1%;
 }
-
+.content-card{
+  padding-top:2% ;
+}
 .card > .img-container {
   height: 60%;
   overflow: hidden;
@@ -25,14 +29,6 @@
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 20px;
-}
-
-.card > .content > ul {
-  list-style-type: none;
-}
-
-.card > .content > ul > li {
-  margin-top: 18px;
 }
 
 .card > .remove {
