@@ -1,29 +1,36 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Col from "../Col"
 import "./style.css"
 
-// console.log(this.state.data[0].props.data[0].userData.userName)
 
-export default class MatchCards extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data : [props]
+export default function MatchCards(props) {
+
+    const [newData, setNewData] = useState()
+    const [isLoading, setIsLoading] = useState(true)
+    console.log(props.arrayData)
+    useEffect(() => {
+        if (props.length === null) {
+            setIsLoading(true)
+        } if (props.length !== null) {
+            setIsLoading(false)
         }
-    }
-
-    render(props){
-            return (
-                <div>
-                    <div className="Container">
+    }, [setIsLoading, props.length]
+    )
+    if (isLoading) {
+        return <div>Loading</div>
+    } if (!isLoading) {
+        return (
+            <div className="Container fixed">
+                {props.arrayData.map((item, userName) => (
+                    <div key={userName}>
                         <div className="mainCont flex-container">
                             <Row-fixed>
                                 <div className="image">
-                                    <Col size="md-3">
+                                    <Col size="md-3" className="image-col">
                                         <div>
-                                            <img className="img" src={this.props.image} alt={this.state.data[0].props.data[0].userData.userName}></img>
+                                            <img className="img" src={props.image} alt={item.userData.userName}></img>
                                             <div>
-                                                <h5>{this.state.data[0].props.data[0].userData.userName}</h5>
+                                                <h5>{item.userData.userName}</h5>
                                             </div>
                                         </div>
                                     </Col>
@@ -31,24 +38,23 @@ export default class MatchCards extends Component {
                                 <div className="messages">
                                     <Col size="md-7 messages">
                                         <div>
-                                            <p className="text">{this.props.message}{this.state.data[0].props.data[0].userData.userName}</p>
+                                            <p className="text">{props.message}{item.userData.userName}</p>
                                         </div>
                                     </Col>
                                 </div>
                                 <div className="messageBtn">
                                     <Col size="md-7 messageBtn">
-    
+
                                         <div className="button-container">
-                                            <a style={{ borderTopRightRadius: "15px", borderBottomRightRadius: "15px", borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px",backgroundColor: "#8ABAD3FF" }} type="submit" className="btn button-message" href={`mailto:doggie@gmail.com?subject=RW:`}><p className="btnText" style={{  fontFamily: "Arial", textEmphasis: "bolder" }}>Message Now</p></a>
-    
+                                            <a style={{ borderTopRightRadius: "15px", borderBottomRightRadius: "15px", borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px", backgroundColor: "#8ABAD3FF" }} type="submit" className="btn button-message" href={`mailto:doggie@gmail.com?subject=RW:`}><p className="btnText" style={{ fontFamily: "Arial", textEmphasis: "bolder" }}>Message Now</p></a>
                                         </div>
-    
                                     </Col>
                                 </div>
                             </Row-fixed>
                         </div>
                     </div>
-                    </div>
-            )
-        }
+                ))}
+            </div>
+        )
     }
+}

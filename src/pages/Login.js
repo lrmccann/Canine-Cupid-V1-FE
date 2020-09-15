@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import API from "../utils/API";
-import UserContext from "../utils/UserContext"
+import UserContext from "../utils/UserContext";
 import { Col, Row, Container } from "../components/Grid";
 import { Input } from "../components/Form";
 import { SignupButton, LoginButton } from "../components/Button";
@@ -104,7 +104,7 @@ const hideModal = () => {
       <div style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
       <Container fluid>
         <form>
-          <div className="loginDetails">
+          <div className="loginDetails" style={{width:"800px"}}>
             <div className="content">
               <Row>
                 <Col size="md-6">                 

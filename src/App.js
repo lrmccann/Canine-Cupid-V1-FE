@@ -59,8 +59,9 @@ function App() {
   }
 
   const getAllMatchesForMatchesPage = (data) => {
-    setUserForMatchesPage (userForMatchesPage=>{return userForMatchesPage=data})
+    setUserForMatchesPage (userForMatchesPage=>{return userForMatchesPage = data})
   }
+
   return (
     <UserProvider value = {{
       user,

@@ -31,32 +31,34 @@ let Profile = () => {
     return (
         <div>
             <Navbar />
-            <h2 style={{fontFamily: "Georgia, serif" , margin: "0 0 0 37%" }}>Welcome to your profile {user.userName}!</h2>
+            <h2 style={{fontFamily: "Georgia, serif" , margin: "0 0 0 35.5%" }}>Welcome to your profile {user.userName}!</h2>
             <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
             <Container fluid>
                 <Row-fluid>
                     <Col size="md-12">                        
                         <Card petName={user.petName} photoUrl={user.photoUrl}>
-                        <div>Pet name: &nbsp;{user.petName}</div> 
-                        <div>Breed: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.breed}</div> 
-                        <div>Age: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.age}</div>
-                        <div>Interests: &nbsp;&nbsp;{interests}</div>
+                        <div style={{marginTop:"1%", marginLeft:"5%"}}>Pet name: &nbsp;{user.petName}</div> 
+                        <div style={{marginTop:"5%", marginLeft:"5%"}}>Breed: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.breed}</div> 
+                        <div style={{marginTop:"5%", marginLeft:"5%"}}>Age: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.age}</div>
                         </Card>
                     </Col>
                 </Row-fluid>
                 <Row>
+                    <Col size="md-11">
                     <ProfDetails>
-                    <div>Location: &nbsp;&nbsp;&nbsp;&nbsp;{user.city}</div>
-                    <div>Zip Code: &nbsp;&nbsp;&nbsp;&nbsp;{user.zipCode} </div>
-                    <div>Join Date: &nbsp;&nbsp;&nbsp;{readableDate}</div>
-                    <div>About my pet: &nbsp;&nbsp;{user.info}</div>
+                    <div>User Name : {user.userName} </div>
+                    <div style={{paddingTop: "3%"}} >Location: &nbsp;&nbsp;&nbsp;&nbsp;{user.city}</div>
+                    <div style={{paddingTop: "3%"}}>Zip Code: &nbsp;&nbsp;&nbsp;&nbsp;{user.zipCode} </div>
+                    <div style={{paddingTop: "3%"}}>Join Date: &nbsp;&nbsp;&nbsp;{readableDate}</div>
+                    <div style={{paddingTop: "3%"}}>About my pet: &nbsp;&nbsp;{user.info}</div>
+                    <EditProfileButton/>
                     </ProfDetails>
+                    </Col>
                 </Row>
-                
-                <EditProfileButton
-                />
-                <h1 style={{fontFamily: "Georgia, serif", marginTop: "12%", marginLeft: "34%"}}>Pet friendly parks near you: </h1>
-                <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%", marginTop: "5%" }}></div>
+                 <Col size="md-12">
+                    <h1 className="mapText" style={{marginTop:"7.5%", marginLeft: "33.5%"}}>Pet-friendly parks near you</h1>
+                    <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
+                </Col>
                 <Map />
             </Container>
         </div>
