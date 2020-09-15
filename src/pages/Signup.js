@@ -11,7 +11,7 @@ import "./Signup.css"
 
 function Signup() {
   
-  const { getData } = useContext(UserContext)
+  const { getData, getAllUsersNames } = useContext(UserContext)
   const history = useHistory();
   const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
   
@@ -30,6 +30,31 @@ function Signup() {
   const [formObject, setFormObject] = useState({})
   console.log("formObject", formObject);
 
+
+  async function getAllNames (sessionToken,arrYes) {
+    console.log("getAllNames")
+    await API.getAllUsers(sessionToken)
+    .then((res)=>{
+      //  arr1 of all users Names received in response get filtered to exclude Logged user from the array, result in arr2
+      const arr1 = res.data;
+      function checkUserName(name) {
+        if (name!==formObject.userName){
+          return name;
+        }
+      }
+      const arr2 = arr1.filter(checkUserName)
+
+      // arrYes conteined users name mutched by Loged user, all those name should be exlused from arr2, result in data
+      const filteredNames = function () {
+        const arr3 = arr2.filter(e=>arrYes.findIndex(i=>i === e) === -1);
+        return arr3;
+      };
+
+      const data = filteredNames();
+
+      getAllUsersNames(data)}
+    )
+  }
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     event.preventDefault();
@@ -44,7 +69,8 @@ function Signup() {
       showModal(errorMsg);
     } else {
       console.log("res.data", res.data)
-      getData(res.data)
+      getData(res.data);
+      getAllNames(res.data.sessionToken,res.data.matchesYes);
       history.push("/profile");
     };
   };
