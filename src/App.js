@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
@@ -9,6 +9,7 @@ import Matches from "./pages/Matches";
 // import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import ScrollToTop from "./components/ScrollTop";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Text from "./components/MyText"
 // import { profile } from "console";
@@ -81,8 +82,14 @@ function App() {
          {/* <Wrapper>  */}
           <Route exact activeClassName path="/" component={Login} />
           <Route exact activeClassName  path="/login" component={Login} />
+          
           <Route exact activeClassName  path="/signup" component={Signup} />
+          <ScrollToTop>
+            <Switch>
           <Route exact activeClassName  path="/profile" component={Profile} />
+
+            </Switch>
+          </ScrollToTop>
           <Route exact activeClassName  path="/editprofile" component={EditProfile} />
           <Route exact activeClassName  path="/matchnow" component={Matchnow} />
           <Route exact activeClassName  path="/matches" component={Matches} />       
