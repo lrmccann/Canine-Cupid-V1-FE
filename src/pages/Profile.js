@@ -11,6 +11,20 @@ import Moment from 'react-moment';
 
 let Profile = () => {
     const { user } = useContext(UserContext)
+    console.log("user profile page",user);
+
+    let interests="";
+    if ('park' in user && user.park === "on")
+    {
+        interests = interests + "Playing in the Park. "
+    }
+    if ('ball' in user && user.ball === "on"){
+        interests = interests + "Playing with a ball. "
+    }
+    if ('frisbee' in user && user.frisbee === "on"){
+        interests = interests + "Playing with a frisbee. "
+    }
+
 
     let readableDate = <Moment format="YYYY/MM/DD">{user.date}</Moment>
 
@@ -21,11 +35,12 @@ let Profile = () => {
             <div className="line" style={{ border: "solid black 2px", margin: "4% 10% 5% 10%" }}></div>
             <Container fluid>
                 <Row-fluid>
-                    <Col size="md-12">
+                    <Col size="md-12">                        
                         <Card petName={user.petName} photoUrl={user.photoUrl}>
                         <div>Pet name: &nbsp;{user.petName}</div> 
                         <div>Breed: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.breed}</div> 
                         <div>Age: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.age}</div>
+                        <div>Interests: &nbsp;&nbsp;{interests}</div>
                         </Card>
                     </Col>
                 </Row-fluid>
