@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { Component } from "react";
 import Col from "../Col"
 import "./style.css"
 

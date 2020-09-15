@@ -34,7 +34,7 @@ let Profile = () => {
                     <div>Location: &nbsp;&nbsp;&nbsp;&nbsp;{user.city}</div>
                     <div>Zip Code: &nbsp;&nbsp;&nbsp;&nbsp;{user.zipCode} </div>
                     <div>Join Date: &nbsp;&nbsp;&nbsp;{readableDate}</div>
-                    <div>About pet: &nbsp;&nbsp;{user.info}</div>
+                    <div>About my pet: &nbsp;&nbsp;{user.info}</div>
                     </ProfDetails>
                 </Row>
                 

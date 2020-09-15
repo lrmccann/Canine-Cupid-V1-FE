@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Row, Container } from "../components/Grid";
 import Navbar from "../components/Navbar";
 import Col from "../components/Col";

@@ -10,14 +10,6 @@ import { NavbarNolinks } from "../components/Navbar";
 import { ModalButton } from "../components/Button";
 import "./Signup.css"
 
-// import Button from 'react-bootstrap/Button';
-// import Modal from "../components/Modal";
-// import Hero from "../components/Hero";
-// import Inputfield from "../components/Inputfield";
-// import { List, ListItem } from "../components/List";
-// Modals added - change to modal component later
-
-
 function Login() {
   
   const { getData, getAllUsersNames } = useContext(UserContext)
@@ -58,9 +50,29 @@ const hideModal = () => {
     }
   };
 
-  async function getAllNames (sessionToken) {
+  async function getAllNames (sessionToken,arrYes) {
+    console.log("getAllNames")
     await API.getAllUsers(sessionToken)
-    .then(res=>getAllUsersNames(res.data))
+    .then((res)=>{
+      //  arr1 of all users Names received in response get filtered to exclude Logged user from the array, result in arr2
+      const arr1 = res.data;
+      function checkUserName(name) {
+        if (name!==loginObject.userName){
+          return name;
+        }
+      }
+      const arr2 = arr1.filter(checkUserName)
+
+      // arrYes conteined users name mutched by Loged user, all those name should be exlused from arr2, result in data
+      const filteredNames = function () {
+        const arr3 = arr2.filter(e=>arrYes.findIndex(i=>i === e) === -1);
+        return arr3;
+      };
+
+      const data = filteredNames();
+
+      getAllUsersNames(data)}
+    )
 }
 
   function handleAuthenticatedResponse(res) {
@@ -73,7 +85,7 @@ const hideModal = () => {
     } else {
       console.log("res.data", res.data);
       getData(res.data);
-      getAllNames(res.data.sessionToken);
+      getAllNames(res.data.sessionToken,res.data.matchesYes);
       // getAllUsersID(allID);
       // console.log("allID",allID);
       history.push("/profile");

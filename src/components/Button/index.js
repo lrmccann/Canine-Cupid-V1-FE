@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import UserContext from "../../utils/UserContext"
@@ -80,22 +80,27 @@ export function MyProfileButton() {
 }
 
 export function MatchNowButton() {
-    const { allUsersNames, getNewUserData, getNewUserName } = useContext(UserContext)
+    const { allUsersNames, getNewUserData } = useContext(UserContext)
     const history =  useHistory();
         
-    async function getUserData (name) {
-        console.log ("getNewUser",name)
-        await API.getUserByName(name)
+    async function getUserData (firstUser) {
+        console.log ("getNewUser",firstUser)
+        await API.getUserByName(firstUser)
         // .then(response=>console.log(response))
         .then((response) =>{
             getNewUserData(response.data); 
-            getNewUserName(response.data.userName)
+            // getNewUserName(response.data.userName)
+            history.push("/matchnow")
         }) 
     }
 
-    async function handleClick() {
-        await getUserData(allUsersNames[0])
-        .then(history.push("/matchnow"));
+    function handleClick() {
+        const rand = function (items) {
+            return items[~~(items.length * Math.random())];
+        }
+        const firstUser = rand(allUsersNames)
+        getUserData(firstUser)
+        // .then(history.push("/matchnow"));
     }
     return (
         <button 
@@ -132,19 +137,4 @@ export function LogOutButton() {
             Log Out
         </button>
     );
-
 }
-
-// export function SaveChangesButton() {
-//     const history = useHistory();
-//     function handleClick() {
-//         history.push("/profile");
-//     }
-//     return (
-//         <button
-//             className="appbtnpink"
-//             onClick={handleClick} >
-//             Edit Profile
-//         </button>
-//     );
-// }
