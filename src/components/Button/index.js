@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import UserContext from "../../utils/UserContext"
@@ -80,7 +80,7 @@ export function MyProfileButton() {
 }
 
 export function MatchNowButton() {
-    const { allUsersNames, getNewUserData } = useContext(UserContext)
+    const { allUsersNames, getNewUserData, getNewUserName } = useContext(UserContext)
     const history =  useHistory();
         
     async function getUserData (firstUser) {
@@ -89,7 +89,7 @@ export function MatchNowButton() {
         // .then(response=>console.log(response))
         .then((response) =>{
             getNewUserData(response.data); 
-            // getNewUserName(response.data.userName)
+            getNewUserName(response.data.userName)
             history.push("/matchnow")
         }) 
     }
@@ -126,8 +126,15 @@ export function MatchesButton() {
 }
 
 export function LogOutButton() {
+    const { user, getData } = useContext(UserContext)
     const history = useHistory();
+
+    useEffect(
+        ()=>{localStorage.setItem('user', JSON.stringify(user));
+      }, [])
+
     function handleClick() {
+        getData("")
         history.push("/login");
     }
     return (
