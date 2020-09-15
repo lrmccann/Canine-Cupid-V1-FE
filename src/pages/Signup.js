@@ -109,6 +109,7 @@ function Signup() {
                 <h3>Your Details:</h3>
                 <Col size="md-4">
                   <Input
+                    defaultValue=""
                     onChange={handleInputChange}
                     type="text"
                     minLength="5"
@@ -119,6 +120,7 @@ function Signup() {
                     placeholder="User Name (5-20 characters required)"
                   />
                   <Input
+                    defaultValue=""
                     onChange={handleInputChange}
                     type="password"
                     minLength="5"
@@ -185,14 +187,14 @@ function Signup() {
                     type="number"
                     maxLength="3"
                     size="40"
-                    label="Your Pet's Age: "
+                    label="Your Pet's Age in years: "
                     name="age"
                     placeholder="Your Pet's Age"
                   />
                   <Input
                     onChange={handleInputChange}
                     type="text"
-                    size="200"
+                    size="2000"
                     label="URL to your Pet's Photograph: "
                     name="photoUrl"
                     placeholder="URL to your Pet's Photograph"

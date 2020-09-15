@@ -15,7 +15,7 @@ function EditProfile() {
   const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
   const { user } = useContext(UserContext)
   console.log("user", user)
-  
+
   // Setting our component's initial state
   const [formObject, setFormObject] = useState(user)
   console.log("state", formObject);
@@ -160,14 +160,15 @@ function EditProfile() {
                     type="number"
                     maxLength="3"
                     size="40"
-                    label="Your Pet's Age: "
+                    label="Your Pet's Age in years: "
                     name="age"
                     placeholder="Your Pet's Age"
                   />
                   <Input
                     onChange={handleInputChange}
+                    defaultValue={user.photoUrl}
                     type="text"
-                    size="200"
+                    size="2000"
                     label="URL to your Pet's Photograph: "
                     name="photoUrl"
                     placeholder="URL to your Pet's Photograph"
@@ -192,6 +193,7 @@ function EditProfile() {
                   />
                   <TextArea
                     onChange={handleInputChange}
+                    defaultValue={user.info}
                     label="Additional Information about your Pet: "
                     name="info"
                     rows="8"

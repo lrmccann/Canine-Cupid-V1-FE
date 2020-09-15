@@ -66,13 +66,13 @@ export default {
         );
     },
 
-    setUsersMatches: async function(userData1,userData2,sessionToken) {
+    setUsersMatches: async function(userData1,userData2) {
         console.log("API.setUsersMatches was called", userData1, userData2)
         // const token = getToken()
-        // console.log("token",sessionToken)
+        // console.log("token",token)
         return await axios.put(
             "https://canine-cupid.herokuapp.com/usersmatches/"+userData1+"/"+userData2
-            // { headers: {'session-token': sessionToken}}
+            //, { headers: {'session-token': token}}
         );
     }
 
